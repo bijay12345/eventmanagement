@@ -1,0 +1,35 @@
+{%extends 'app/base.html'%}
+{% load rest_framework %}
+{%block content%}
+<div class="profile">
+        <div class="card profile-card">
+            <div>
+              <h3 class="card-title profiletitle">Profile Info</h3>  
+            </div>  
+            <div>
+               <img class="rounded-circle account-img img-fluid" src="{{ profiledata.image }}"> 
+            </div>
+              <div class="card-body card-body-profile">
+                <form action="{% url 'profile' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                      <label for="username" class="form-label">Username</label>
+                      <input type="text" class="form-control" id="username" name="username" placeholder="{{userdata.name}}">
+                    </div>
+                    <div class="mb-3">
+                      <label for="profile_email" class="form-label">Email address</label>
+                      <input type="email" class="form-control" name="email" id="profile_email" placeholder="{{userdata.email}}">
+                    </div>
+                    <label for="inputGroupFile01" class="form-label">Image Upload</label>
+                    <div class="input-group mb-3">
+                      <input type="file" class="form-control" id="inputGroupFile01" name="image">
+                    </div>
+                    <button type="submit" class="btn btn-primary pt-2">
+                        submit
+                    </button>
+                </form> 
+              </div>
+        </div>
+</div>
+
+{%endblock content%}

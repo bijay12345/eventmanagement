@@ -1,0 +1,107 @@
+{%extends 'app/base.html'%}
+{%block content%}
+
+<div class="card detailCard">
+	<div>
+		<form action="{% url 'detaillike' event.id %}" class="detaillike" method="POST">
+	      {% csrf_token %}
+
+	        {% if request.user.name in event.likers %}
+	        
+	          <button name="event_id" type="submit" class="like_button" value="{{event.id}}">
+	            <i class="fa-solid fa-heart heart"></i>
+	          </button>
+	  
+	          {%if no_of_likes > 1 and request.user.name in event.likers %}
+	            <p class="text-muted liketext">you and {{no_of_likes}} others liked</p>
+	          {%elif no_of_likes == 1 and  request.user.name in event.likers %}
+	            <p class="text-muted liketext">you liked this post</p>
+	          {%elif no_of_likes == 2 and  request.user.name in event.likers %}
+	            <p class="text-muted liketext">you and 1 other liked</p>
+	          {%else%}
+	            <p class="text-muted liketext">{{no_of_likes}} likes</p>
+	          {%endif%}
+	        {%else%}
+	          <button name="event_id" class="like_button" type="submit" value="{{event.id}}">
+	            <i class="fa-regular fa-heart heart"></i>
+	          </button>
+	          <p class="text-muted">Like</p>
+	        {%endif%}
+	    </form>
+	</div>
+		
+	<div class="detailImg">
+		<img src="{{event.image}}" class="card-img-top img-fluid detailimgtop" alt="...">
+	</div>
+	  
+	  <div class="card-body">
+	    <h5 class="card-title event-title">{{event.name}}</h5><br>
+	    <h4>Description: </h4>
+	    <div id="detailDescription">
+	    	<p class="card-text">{{event.description}}</p>
+	    </div>
+	    
+	    <div class="dateloc">
+	    	<i class="fa-regular fa-clock detaildateicon"></i>
+	    	<p class="card-text detaildate"><small class="text-muted">{{event.evedate}}</small></p>
+	    	<i class="fa-solid fa-location-dot detaillocationicon"></i>
+	    	<p class="card-text detaillocation"><small class="text-muted">{{event.location}},</small></p>
+	    </div>
+
+	    <div class="title-rating">
+			 <h6 class="card-text text-muted">
+	          avg rating
+	         </h6>
+	         <div>
+	         	<p>{{avgrating}}<span><i class="fa-solid fa-star" id="ratingstar"></i></span></p>
+	         </div>
+	         
+		</div>
+	  </div>
+
+	<div class="event_detail_auth">
+	    <form action="{% url 'detailinterest' event.id %}" class="detailinterest" method="POST">
+	      {% csrf_token %}
+	      {%if request.user.id in event.interested %}
+	        <button name="interest_id" type="submit" value="{{event.id}}" class=" btn btn-outline-danger detail-btn">
+	          Not interested
+	        </button>
+	      {%else%}
+	        <button name="interest_id" type="submit" value="{{event.id}}" class=" btn btn-outline-success detail-btn">
+	          interested
+	        </button>
+	      {%endif%}
+	    </form>
+    </div>
+
+	  <div class="star-rating" >
+		{% if rated == "false" %}
+		<div class="stardiv">
+			<h3>Rate your experience</h3>
+			<div class="stars">
+			  <form action="{%url 'rating'%}" method="POST">
+			  	{%csrf_token%}
+			  	<div>
+			  	<input class="star star-5" id="star-5" value="5" type="radio" name="star"/>
+			    <label class="star star-5" for="star-5"></label>
+			    <input class="star star-4" id="star-4" value="4" type="radio" name="star"/>
+			    <label class="star star-4" for="star-4"></label>
+			    <input class="star star-3" id="star-3" value="3" type="radio" name="star"/>
+			    <label class="star star-3" for="star-3"></label>
+			    <input class="star star-2" id="star-2" value="2" type="radio" name="star"/>
+			    <label class="star star-2" for="star-2"></label>
+			    <input class="star star-1" id="star-1" value="1" type="radio" name="star"/>
+			    <label class="star star-1" for="star-1"></label>
+			  	</div>
+			    
+				<button name="item_id" type="submit" value="{{event.id}}" class="btn btn-info detail-btn mt-2 mb-3">
+					submit
+				</button>
+
+			  </form>
+			</div>
+			{%endif%}
+		</div>
+	</div>
+</div>
+{%endblock content%}
