@@ -33,6 +33,18 @@ class EventSerializer(serializers.ModelSerializer):
 	image = serializers.ImageField(
             max_length=None, use_url=True
         )
+	image2 = serializers.ImageField(
+            max_length=None, use_url=True
+        )
+	image3 = serializers.ImageField(
+            max_length=None, use_url=True
+        )
+	image4 = serializers.ImageField(
+            max_length=None, use_url=True
+        )
+	image5 = serializers.ImageField(
+            max_length=None, use_url=True
+        )
 	class Meta:
 		model=Events
 		fields='__all__'

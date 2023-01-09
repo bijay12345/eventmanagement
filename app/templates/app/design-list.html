@@ -1,0 +1,54 @@
+{%extends 'app/base.html'%}
+{%block content%}
+
+<section class="design-2">
+	<div class="design2-top-section">
+		<div class="row" style="width: 100%;">
+			{%for event in events%}
+				<div class="col-lg-3 col-md-6">
+					<div>
+						<div class="design2-like-button-div">
+							<form action="{% url 'like' %}" method="POST">
+						      {% csrf_token %}
+						      {% if request.user.name in event.likers %}
+						          <button name="event_id" type="submit" class="design2-like-button" value="{{event.id}}">
+					            	<i class="fa-solid fa-heart" style="color: white; font-size: 1.5rem;"></i>
+					         	  </button>
+				         	  {%else%}
+				         	  	  <button name="event_id" type="submit" class="design2-like-button" value="{{event.id}}">
+					            	<i class="fa-regular fa-heart" style="color: white; font-size: 1.5rem;"></i>
+					         	  </button>
+				         	  {%endif%}
+						    </form>
+						</div>
+						<img class="list-img" width="100%" height="300px" src="{{event.image}}">
+					</div>	
+					<div class="design2-img-detail">
+						<div class="img-detail-heading-star">
+							<p class="design2-heading design2-event-img-heading">{{event.name}}</p>
+							<p class="text-muted design2-heading likedetail" style="font-size: .8rem;">
+								5 likes
+							</p>
+						</div>
+						<div class="img-detail-heading-star">
+							<p class="text-muted design2-heading design2-location-img-heading">{{event.location}}</p>
+							<p class="design2-heading design2-para-heading likedetail">
+								<span><i class="fa-solid fa-star"></i></span> 
+								3.5
+							</p>
+						</div>
+						<p class="text-muted detail-date">{{event.evedate}}</p>
+					</div>
+                    <!-- END OF EVENT INTEREST BUTTON -->
+
+                    <!-- DETAIL BUTTON -->
+					<a class="btn" id="link-detail-btn" href="{%url 'detail' event.id%}">View details &raquo;</a>
+					<!-- END OF DETAIL BUTTON -->
+					<hr class="end-list-hr">
+				</div>
+			{%endfor%}
+		</div>
+	</div>
+</section>
+
+{%endblock content%}

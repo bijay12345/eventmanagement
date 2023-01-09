@@ -71,7 +71,11 @@ class Events(models.Model):
 	slug=models.CharField(max_length=1000,null=True,blank=True)
 	likers=models.ManyToManyField(User,related_name='likers',blank=True)
 	interested=models.ManyToManyField(User,related_name="interested",blank=True)
-	image=models.ImageField(upload_to='media',default='default.jpeg')
+	image=models.ImageField(upload_to='eventpic',default='default.jpeg')
+	image2=models.ImageField(upload_to='eventpic',default='default.jpeg')
+	image3=models.ImageField(upload_to='eventpic',default='default.jpeg')
+	image4=models.ImageField(upload_to='eventpic',default='default.jpeg')
+	image5=models.ImageField(upload_to='eventpic',default='default.jpeg')
 
 	class Meta:
 		ordering=['-evedate']
@@ -106,11 +110,36 @@ class Events(models.Model):
 		super().save(*args,**kwargs)
 		
 		image=Image.open(self.image.path)
+		image2=Image.open(self.image2.path)
+		image3=Image.open(self.image3.path)
+		image4=Image.open(self.image4.path)
+		image5=Image.open(self.image5.path)
 
 		if image.width > 500 or image.height > 500:
 			output=(500,500)
 			image.thumbnail(output)
 			image.save(self.image.path)
+
+		if image2.width > 500 or image2.height > 500:
+			output=(500,500)
+			image2.thumbnail(output)
+			image2.save(self.image2.path)
+
+		if image3.width > 500 or image3.height > 500:
+			output=(500,500)
+			image3.thumbnail(output)
+			image3.save(self.image3.path)
+
+		if image4.width > 500 or image4.height > 500:
+			output=(500,500)
+			image4.thumbnail(output)
+			image4.save(self.image4.path)
+
+		if image5.width > 500 or image5.height > 500:
+			output=(500,500)
+			image5.thumbnail(output)
+			image5.save(self.image5.path)
+
 
 
 

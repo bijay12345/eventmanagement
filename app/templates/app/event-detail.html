@@ -1,0 +1,88 @@
+{%extends 'app/base.html'%}
+{%block content%}
+<section class="design3">
+	<div class="design3-top-section">
+		<h1>{{event.name}}</h1>
+		<div class="design3-top">
+			<p class="design-detail-top"><span><i class="fa-solid fa-star"></i></span> {{avgrating}}</p>
+			<p class="design-detail-top">
+				{{intersted_people}} interested
+			</p>
+			<p class="design-detail-top">
+				{{no_of_likes}} liked
+			</p>
+			<p class="design-detail-top">
+				Venue: {{event.location}}
+			</p>
+		</div>
+		<br>
+		<div class="image-section">
+			<img class="image-section-top-img" src="{{event.image}}" width="500px" height="500px">
+			<div class="image-section-bottom-img">
+				<div class="img1">
+					<img  class="detail-image-top-content img1" src="{{event.image2}}" width= '250px' height="250px">
+					<img  class="detail-image-top-content img2" src="{{event.image3}}" width= '250px' height="250px">
+				</div>
+				<div class="img2">
+					<img class="detail-image-bottom-content img3" src="{{event.image4}}" width= '250px' height="250px">
+					<img  class="detail-image-bottom-content img4" src="{{event.image5}}" width= '250px' height="250px">
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
+
+	<div class="description-section">
+		<h5>Description: </h5>
+		<p class="text-muted">{{event.description}}</p>
+		<hr>
+	</div>
+
+
+	<div class="rating-section">
+		<div class="row">
+			{% if rated == "false" %}
+			<div class="col-lg-6 col-md-6 col-sm-6 rating-column">
+				<h3 class="rate-title">Rate the event</h3>
+				<div class="stars">
+				  <form action="{%url 'rating'%}" method="POST">
+				  	{%csrf_token%}
+				  	<div>
+					  	<input class="star star-5" id="star-5" value="5" type="radio" name="star"/>
+					    <label class="star star-5" for="star-5"></label>
+					    <input class="star star-4" id="star-4" value="4" type="radio" name="star"/>
+					    <label class="star star-4" for="star-4"></label>
+					    <input class="star star-3" id="star-3" value="3" type="radio" name="star"/>
+					    <label class="star star-3" for="star-3"></label>
+					    <input class="star star-2" id="star-2" value="2" type="radio" name="star"/>
+					    <label class="star star-2" for="star-2"></label>
+					    <input class="star star-1" id="star-1" value="1" type="radio" name="star"/>
+					    <label class="star star-1" for="star-1"></label>
+				  	</div>
+			        <button name="item_id" type="submit" value="{{event.id}}" class="ratebutton">
+						submit
+					</button>
+				  </form>
+				</div>
+			</div>
+			{%endif%}
+			<div class="col-lg-6 col-md-6 col-sm-6">
+				<h4>Are you interested in this Event?</h4> 
+				 <form action="{% url 'detailinterest' event.id %}" method="POST">
+			      {% csrf_token %}
+			      <div class="interestbuttons">
+			        <button name="interest_id" type="submit" value="{{event.id}}" class="yesbutton">
+			          Yes
+			        </button>
+
+			        <button name="interest_id" type="submit" value="{{event.id}}" class="nobutton">
+			          No
+			        </button>
+			      </div>
+			    </form>	
+			</div>
+		</div>
+	</div>
+</section>
+{%endblock content%}

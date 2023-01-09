@@ -1,0 +1,53 @@
+{%extends 'app/base.html'%}
+{% load rest_framework %}
+{%block content%}
+<section class="profile-design">
+  <div class="profile-top-info">
+    <div class="profile-div">
+      <div class="profile-div-img">
+       <img class="profile-img" src="{{profiledata.image}}" width="150px" height="150px">
+      </div>
+      <div class="profile-div-info">
+        <h1>{{request.user.name}}</h1>
+        <p class="text-muted"><span><i class="fa-solid fa-location-dot"></i></span> Siliguri, Westbengal</p>
+        <p>Member of the evement managing team</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+    </div>
+
+    <div class="profilebuttons">
+      <div class="profile-group-btn">
+        <button id="profile-info-buttons">12 events organised</button>
+        <button id="profile-info-buttons">13 projects done</button>
+        <button id="profile-info-buttons">3 companies worked on</button>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="profile-form">
+    <h4 class="updateProfile">Profile Update </h4>
+    <form action="{% url 'profile' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input type="text" class="form-control" id="username" name="username" placeholder="{{userdata.name}}">
+        </div>
+        <div class="mb-3">
+          <label for="profile_email" class="form-label">Email address</label>
+          <input type="email" class="form-control" name="email" id="profile_email" placeholder="{{userdata.email}}">
+        </div>
+        <label for="inputGroupFile01" class="form-label">Image Upload</label>
+        <div class="input-group mb-3">
+          <input type="file" class="form-control" id="inputGroupFile01" name="image">
+        </div>
+        <button type="submit" class="profile-update-btn">
+            Update
+        </button>
+    </form>
+  </div>
+</section>
+
+{%endblock content%}

@@ -46,7 +46,7 @@ class HomeView(APIView):
 			"no_of_likes":no_of_likes,
 			}
 
-			return Response(context,template_name="app/detail.html")
+			return Response(context,template_name="app/event-detail.html")
 		else:
 			dates=datetime.date.today()
 			events=Events.objects.all()
@@ -55,7 +55,7 @@ class HomeView(APIView):
 			context={
 			"events":serializer.data,
 			}
-			return Response(context,template_name="app/home.html")
+			return Response(context,template_name="app/design-list.html")
 
 
 class UserRegistrationView(APIView):
@@ -199,7 +199,7 @@ class RatingView(APIView):
 	
 class ProfileView(APIView):
 
-	template_name="app/profile.html"
+	template_name="app/userprofile.html"
 	renderer_classes = [TemplateHTMLRenderer]
 
 	def get(self,request,format=None):
@@ -233,16 +233,24 @@ class ProfileView(APIView):
 		if userSerializer.is_valid():
 			userSerializer.save()
 			messages.success(request,f"{user.name}'s profile successfully updated!")
-			return redirect("profile")
 
 		if profile_serializer.is_valid():
-			print(True)
 			profile_serializer.save()
 			messages.success(request,f"{user.name}'s profile successfully updated!")
-			return redirect("profile")
+
 		messages.warning(request,"Please input some data to post")
 		return redirect("profile")
 
 
 def aboutus(request):
 	return render(request,"app/about.html")
+
+
+def design(request):
+	return render(request,"app/design.html")
+
+def design2(request):
+	return render(request,"app/design2.html")
+
+def design3(request):
+	return render(request,"app/design3.html")
