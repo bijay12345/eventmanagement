@@ -1,7 +1,6 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework import status
 from .serializers import (UserSerializer,LoginSerializer,LikeSerializer,EventSerializer,
 	InterestSerializer,RatingSerializer,ProfileSerializer,ProfileUserSerializer)
 from django.contrib.auth import authenticate,login,logout
@@ -13,16 +12,18 @@ from django.http import HttpResponseRedirect
 from rest_framework.permissions import IsAuthenticated,AllowAny
 from rest_framework.authentication import BasicAuthentication
 from django.contrib import messages
-from rest_framework.parsers import FileUploadParser
 import datetime
 from rest_framework.authtoken.models import Token
+from django.core.paginator import Paginator
+
+
 
 class HomeView(APIView):
 	renderer_classes = [TemplateHTMLRenderer]
-	def get(self, request,id=None, format=None):
-		if id is not None:
+	def get(self, request,slug=None, format=None):
+		if slug is not None:
 			
-			event=Events.objects.get(id=id)
+			event=Events.objects.get(slug=slug)
 
 			rated=False
 			if Rating.objects.filter(user=request.user.id).exists() and Rating.objects.filter(event=event).exists():
@@ -48,13 +49,18 @@ class HomeView(APIView):
 
 			return Response(context,template_name="app/event-detail.html")
 		else:
-			dates=datetime.date.today()
-			events=Events.objects.all()
 
+			events=Events.objects.all()
 			serializer=EventSerializer(events,many=True)
+			paginator=Paginator(serializer.data,20)
+			page_number=request.GET.get("page")
+			page_obj=paginator.get_page(page_number)
+			
 			context={
+			"page_obj":page_obj,
 			"events":serializer.data,
 			}
+
 			return Response(context,template_name="app/design-list.html")
 
 

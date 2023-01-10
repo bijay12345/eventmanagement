@@ -4,7 +4,7 @@
 <section class="design-2">
 	<div class="design2-top-section">
 		<div class="row" style="width: 100%;">
-			{%for event in events%}
+			{%for event in page_obj%}
 				<div class="col-lg-3 col-md-6">
 					<div>
 						<div class="design2-like-button-div">
@@ -12,11 +12,11 @@
 						      {% csrf_token %}
 						      {% if request.user.name in event.likers %}
 						          <button name="event_id" type="submit" class="design2-like-button" value="{{event.id}}">
-					            	<i class="fa-solid fa-heart" style="color: white; font-size: 1.5rem;"></i>
+					            	<i class="fa-solid fa-heart" style="color: red; font-size: 1.5rem;"></i>
 					         	  </button>
 				         	  {%else%}
 				         	  	  <button name="event_id" type="submit" class="design2-like-button" value="{{event.id}}">
-					            	<i class="fa-regular fa-heart" style="color: white; font-size: 1.5rem;"></i>
+					            	<i class="fa-regular fa-heart" style="color: red; font-size: 1.5rem;"></i>
 					         	  </button>
 				         	  {%endif%}
 						    </form>
@@ -42,11 +42,28 @@
                     <!-- END OF EVENT INTEREST BUTTON -->
 
                     <!-- DETAIL BUTTON -->
-					<a class="btn" id="link-detail-btn" href="{%url 'detail' event.id%}">View details &raquo;</a>
+					<a class="btn" id="link-detail-btn" href="{%url 'detail' event.slug%}">View details &raquo;</a>
 					<!-- END OF DETAIL BUTTON -->
 					<hr class="end-list-hr">
 				</div>
 			{%endfor%}
+
+			<div>
+				<div class="pagination-div">
+					{%if page_obj.has_previous%}
+						<a class="btn" id="pagin-btn-p" href="?page={{page_obj.previous_page_number}}">Previous</a>
+					{%endif%}
+
+					<span class="current">
+		                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+		            </span>
+
+					{%if page_obj.has_next%}
+						<a class="btn" id="pagin-btn-n" href="?page={{page_obj.next_page_number}}">Next</a>
+					{%endif%}
+				</div>
+			</div>
+			
 		</div>
 	</div>
 </section>

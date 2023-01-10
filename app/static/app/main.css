@@ -298,7 +298,7 @@ label.star:before {
 
 
 
-/*Design 2*/
+/*Home Page Design*/
 
 
 .list-img{
@@ -380,9 +380,25 @@ label.star:before {
   color: grey;
 }
 
+.pagination-div{
+  width: fit-content;
+  margin: auto;
+}
+
+#pagin-btn-n{
+  background: darkgoldenrod;
+  border-radius: 3px;
+  color: aliceblue;
+}
+
+#pagin-btn-p{
+    background: burlywood;
+    border-radius: 3px;
+    color: beige;
+}
 
 
-/*END OF DESIGN 2*/
+/*END OF HOME PAGE DESIGN */
 
 
 
@@ -390,7 +406,7 @@ label.star:before {
 
 
 
-/*DESIGN 3*/
+/* DETAIL PAGE DESIGN  */
 .design3{
   padding: 2% 5% 2% 8%;
 }
@@ -399,7 +415,7 @@ label.star:before {
 }
 .design-detail-top{
   width: fit-content;
-  margin: 0% 1% 0% 0%;
+  margin: 0% 2% 0% 0%;
 }
 
 
@@ -494,32 +510,7 @@ label.star:before {
   color: black;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*  END OF DETAIL PAGE DESIGN */
 
 
 
@@ -529,8 +520,7 @@ label.star:before {
   background-color: #F1F6F5;
   border-top-right-radius: 2rem;
   border-bottom-left-radius: 2rem;
-  padding-top: 3%;
-  padding-bottom: 6%;
+  padding: 3% 12% 6% 12%;
 }
 
 .profile-img{
@@ -556,17 +546,20 @@ label.star:before {
 
 .profilebuttons{
   display: flex;
+  margin-top: 5%;
 }
 
 .profile-group-btn{
-  margin-left: 30%;
+  margin-left: 24%;
+      width: 100%;
 }
 
 #profile-info-buttons{
   border: none;
   background: #6B728E;
-  padding: 1rem;
+  padding: 2%;
   color: white;
+  margin-top: 1%;
 }
 
 .updateProfile{
@@ -593,7 +586,20 @@ label.star:before {
   border-radius: 2px;
 }
 
+/*  END OF PROFILE PAGE DESIGN   */
 
 
 
 
+/* REGISTER LOGOUT PAGE */
+
+.authform2{
+  background: #82AAE3;
+  margin: 5% 1% 1% 1%;
+  width: 19%;
+  border: none;
+  padding: 0%;
+
+
+
+}

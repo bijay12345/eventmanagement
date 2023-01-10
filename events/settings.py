@@ -11,8 +11,15 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
 from pathlib import Path
+import environ
 
 from datetime import timedelta
+
+
+env=environ.Env()
+
+environ.Env.read_env()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-z@*5^zdqcbpyn5ep*n_&q(7bz%*vf=r!ts=nf=r57lq2$atd-='
+SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -125,7 +132,7 @@ REST_FRAMEWORK={
         'rest_framework.permissions.IsAuthenticated'
     ],
     'DEFAULT_PAGINATION_CLASS': ['rest_framework.pagination.PageNumberPagination'],
-    'PAGE_SIZE': 10,
+    'PAGE_SIZE': 8,
 }
 
         

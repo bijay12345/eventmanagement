@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 from django.core.validators import MaxValueValidator
 from PIL import Image
-
+from django.template.defaultfilters import slugify
 
 class UserManager(BaseUserManager):
 	def create_user(self,email,name,password=None,password2=None):
@@ -89,11 +89,6 @@ class Events(models.Model):
 	def __str__(self):
 		return self.name
 
-	def save(self,*args,**kwargs):
-		if not self.slug:
-			self.slug=slugify(self.name+"-"+str(self.evedate))
-		return super().save(*args,**kwargs)
-
 	def avgrating(self):
 		ratings=Rating.objects.filter(event=self)
 		count = len(ratings)
@@ -139,6 +134,10 @@ class Events(models.Model):
 			output=(500,500)
 			image5.thumbnail(output)
 			image5.save(self.image5.path)
+
+		if not self.slug:
+			self.slug=slugify(self.name+"-"+str(self.evedate))
+		return super().save(*args,**kwargs)
 
 
 
