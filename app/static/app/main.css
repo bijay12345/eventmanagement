@@ -11,6 +11,7 @@
 
 #homenav{
   margin-left: 25%;
+  width: 100%;
 }
 
 #basenav{
@@ -27,13 +28,14 @@
 
 .nav-item-profile{
   display: flex;
+  margin-left: 5%;
+  padding-top: .5%;
 }
 
 .nav-image{
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  margin-top: 9%;
   font-size: 3rem;
   color: white;
 }
@@ -41,6 +43,7 @@
 #profile{
   margin: 0px;
   color: white;
+  padding-top: 3px;
 }
 
 
@@ -179,7 +182,7 @@ label.star:before {
 }
 
 .design-btn-info{
-  margin-top: 5%;
+  margin-top: 1%;
   text-align: center;
 }
 
@@ -271,6 +274,10 @@ label.star:before {
   margin-left: 1rem;
 }
 
+.working-model-quotes{
+  text-align: justify;
+}
+
 
 /*DESIGN LAST CONTENT*/
 
@@ -286,6 +293,7 @@ label.star:before {
   height: .5rem;
   background: linear-gradient(94.23deg,#5374fa 12.41%,#fd9179 52.55%,#ff6969 89.95%);
 }
+
 
 
 /*  END OF DESIGN 1 */
@@ -371,6 +379,20 @@ label.star:before {
   border-style: dotted;
 }
 
+.list-check-mark-no{
+  border: 0;
+  background-color: transparent;
+}
+
+.list-check-mark-yes{
+  border: 0;
+  background-color: transparent;
+}
+
+#check-btn{
+  font-size: 1.4rem;
+}
+
 #link-detail-btn{
   width: 90%;
   margin-left: 5%;
@@ -397,6 +419,20 @@ label.star:before {
     color: beige;
 }
 
+.interest{
+  width: fit-content;
+}
+
+.interest-row{
+  display: flex;
+  position: relative;
+}
+.comment-icon{
+  position: absolute;
+  right: 13%;
+  font-size: 1.3rem;
+}
+
 
 /*END OF HOME PAGE DESIGN */
 
@@ -418,6 +454,9 @@ label.star:before {
   margin: 0% 2% 0% 0%;
 }
 
+.description-section{
+  margin-top: 3%;
+}
 
 /*Image section*/
 
@@ -469,7 +508,7 @@ label.star:before {
 }
 
 .rate-title{
-  margin-left: 5%;
+  margin-left: 15%;
 } 
 
 .ratebutton{
@@ -481,34 +520,49 @@ label.star:before {
   border-color: #A75D5D;
 }
 
+
 .ratebutton:hover{
   background: #FFC3A1;
 }
 
-.interestbuttons{
-  margin-top: 11%;
-  margin-left: 2%;
-}
-.yesbutton{
-    width: 33%;
-    border: none;
-    padding: 3%;
-    background: #82AAE3;
-}
-.nobutton{
-  width: 33%;
+#comment-btn{
   border: none;
-  padding: 3%;
-  background: #FF597B;
+  margin-top: 2%;
+  background: aqua;
+  border-radius: 3px;
+  padding: 7px;
 }
-.yesbutton:hover{
-  background: #BFEAF5;
-  color: black;
+
+.comment-section{
+  width: 55%;
 }
-.nobutton:hover{
-  background: #FFCAC8;
-  color: black;
+
+.comment-div{
+  padding:0% 9% 0% 0%;
 }
+
+.comment-div-top{
+  display: flex;
+  margin-bottom: 2%;
+}
+
+.comment-img{
+  border-radius: 50%;
+  margin-top: 2%;
+}
+.comment-div-bottom{
+  background: aliceblue;
+  margin-left: 1rem;
+  border-radius: 10%;
+  padding: 1% 2%;
+  width: 100%;
+}
+
+.comment-item{
+  width: fit-content;
+  margin: 0px;
+}
+
 
 /*  END OF DETAIL PAGE DESIGN */
 

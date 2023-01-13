@@ -1,0 +1,91 @@
+{%extends 'app/base.html'%}
+{%block content%}
+<section class="design-section">
+<div class="design-upper">
+	<h1 class="design-title">
+		Make your event joyous and full of happy faces
+	</h1>
+	<h5 class="design-quote" style="padding-bottom: 5%;">An event is not over until everyone is tired of talking about it and we can make it happen for your's.</h5>
+	{%if not user.is_authenticated%}
+		<div class="design-btn-info" style="padding-bottom: 5%;">
+			<a href="{%url 'login' %}" class="design-btn" style="text-decoration: none;">Login</a>
+			<a href="{%url 'register' %}" class="design-btn" style="text-decoration: none;">Register</a>
+		</div>
+	{%endif%}
+	
+</div>
+
+<div class="design-middle" name="workingmodel">
+	<div class="design-middle-info">
+		<h1 class="design-middle-title">Our Working model</h1>
+		<div class="row">
+			<div class="col-lg-4 col-sm-12">
+				<hr>
+				<h3>Creativity</h3>
+				<p class="text-muted working-model-quotes"><b>Design can be art</b><br><b>Design can be aesthetics</b><br><b>Design is so simple that's why it's so complicated.</b><br><br>With support of our experienced creativity team we come forward and offer to take all these burdens for you to just enjoy these special moments.</p>
+			</div>
+			<div class="col-lg-4 col-sm-12">
+				<hr>
+				<h3>Planning</h3>
+				<p class="text-muted working-model-quotes"><b>“Be faithful to your own taste, because nothing you really like is ever out of style.” —Billy Baldwin</b> <br><br>We offer to do the best that fits in your vision and provide the services according to your plan.</p>
+			</div>
+			
+			<div class="col-lg-4 col-sm-12">
+				<hr>
+				<h3>Executing</h3>
+				<p class="text-muted working-model-quotes"><b>“Execution is the ability to mesh strategy with reality, align people with goals, and achieve the promised results.” Lawrence Bossidy</b><br><br>With over 100 successful event execution and over 1000 satisfied customer we offer to smoothly execute your special occassions with ease.<br>since it's the execution that matters</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="design-bottom">
+	<div class="bottom-design-info">
+		<h1 class="design-bottom-title bottom-text">Our recently organized Events</h1>
+		<div class="row">
+			<div class="col-lg-8 design-bottom-first-row">
+				<p class="design-bottom-info bottom-text">Below are some of the exciting events we organized with many smiles and happy faces..<br> with well organized and satisfied customers, We guarantee to provide an exciting and wonderful events to you!</p>
+			</div>
+			<div class="col-lg-4 design-bottom-first-row design-button-bottom">
+				{%if request.user.is_authenticated%}
+					<a href="{%url 'home'%}" class="design-btn bnm" style="text-decoration: none; bnm:hover: color:grey;">Learn More &raquo;</a>
+				{%else%}
+					<a href="{%url 'login'%}" class="design-btn bnm" style="text-decoration: none; bnm:hover: color:grey;">Learn More &raquo;</a>
+				{%endif%}
+			</div>
+		</div>
+		<hr style="color: white;">
+		<div class="row">
+			{%for item in recentevents%}
+			<div class="col-lg-4 bottom-img">
+				<img class="detail-bottom-img" src="{{item.image}}" alt="Girl in a jacket" width="100%" height="300">
+				<hr>
+				<div class="image-text">
+					<h4>{{item.name}}</h4>
+				</div>
+			</div>
+			{%endfor%}					
+		</div>
+
+	</div>
+</div>
+
+<div class="ourMission">
+	<h5 class="text-muted" style="margin-bottom: 2rem;">OUR MISSION</h5>
+
+	<div class="row" style="width:99%;">
+		<div class="col-lg-6">
+			<hr style="width: 85%;">
+			<h1 class="missionTitle">
+				is to make you and your loved ones go WOW.
+			</h1>
+		</div>
+		<div class="col-lg-6">
+			<p class="missionText">With a team of well experienced in management and decors, We assure to give you the best.<br>We offer budget friendly services with the extremely beautiful organized decors.</p>
+		</div>
+	</div>
+</div>
+
+</section>
+
+{%endblock content%}

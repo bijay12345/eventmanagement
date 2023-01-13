@@ -8,11 +8,11 @@
        <img class="profile-img" src="{{profiledata.image}}" width="150px" height="150px">
       </div>
       <div class="profile-div-info">
-        <h1>{{request.user.name}}</h1>
-        <p class="text-muted"><span><i class="fa-solid fa-location-dot"></i></span> Siliguri, Westbengal</p>
-        <p>Member of the evement managing team</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.</p>
+        <h2>{{request.user.name}}</h2>
+        <p class="text-muted"><span><i class="fa-solid fa-location-dot"></i></span> {{profiledata.location}}</p>
+        <p class="text-muted">Email: {{userdata.email}}</p>
+        <p class="text-muted">Phone: {{profiledata.phonenumber}}</p>
+        <p class="text-muted">Bio:<small> {{profiledata.bio}}</small></p>
       </div>
     </div>
 
@@ -24,20 +24,30 @@
       </div>
     </div>
   </div>
-
   <hr>
-
   <div class="profile-form">
     <h4 class="updateProfile">Profile Update </h4>
     <form action="{% url 'profile' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="mb-3">
           <label for="username" class="form-label">Username</label>
-          <input type="text" class="form-control" id="username" name="username" placeholder="{{userdata.name}}">
+          <input type="text" class="form-control" id="username" name="username" placeholder="Update your username">
         </div>
         <div class="mb-3">
           <label for="profile_email" class="form-label">Email address</label>
-          <input type="email" class="form-control" name="email" id="profile_email" placeholder="{{userdata.email}}">
+          <input type="email" class="form-control" name="email" id="profile_email" placeholder="Update your Email">
+        </div>
+        <div class="mb-3">
+          <label for="phone" class="form-label">Phone Number</label>
+          <input type="text" class="form-control" id="phone" name="phonenumber" placeholder="Please use country code eg. +991212121212">
+        </div>
+        <div class="mb-3">
+          <label for="bio" class="form-label">Bio</label>
+          <input type="text" class="form-control" id="bio" name="bio" placeholder="Enter your bio here">
+        </div>
+        <div class="mb-3">
+          <label for="location" class="form-label">Location</label>
+          <input type="text" class="form-control" id="location" name="location" placeholder="Enter your location">
         </div>
         <label for="inputGroupFile01" class="form-label">Image Upload</label>
         <div class="input-group mb-3">

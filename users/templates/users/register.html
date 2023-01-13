@@ -1,6 +1,6 @@
 {%extends 'app/base.html'%}
 {%block content%}
-<div class="content-section container" style="width: 45%;margin-top: 7rem; line-height: 4rem;">
+<div class="content-section container" style="width: 45%;margin-top: 5%; line-height: 3rem;">
     <form method="POST" action="{%url 'register' %}">
         {% csrf_token %}
              <legend class="border-bottom mb-4">Register</legend>
@@ -8,7 +8,7 @@
               <div class="mb-3 row" style="margin-top: 5%;">
                 <label for="username" class="col-sm-2 col-form-label">Username</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="username" name="username">
+                  <input type="text" class="form-control" id="username" name="name">
                 </div>
               </div>
 
@@ -39,7 +39,7 @@
     </form>
     <div class="border-top pt-3">
         <small class="text-muted">
-            Need An Account? <a class="ml-2" href="">Sign Up</a>
+            Have An Account? <a class="ml-2" href="{%url 'login'%}">Login</a>
         </small>
     </div>
 </div>

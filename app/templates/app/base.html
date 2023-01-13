@@ -28,31 +28,37 @@
 <body style="font-family: 'Montserrat', sans-serif;">
 	<nav class="navbar navbar-expand-lg" id="basenav">
 	  <div class="container-fluid">
-	    <a class="navbar-brand" id="brnd" href="{%url 'home'%}">evement</a>
-	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+	  	{%if user.is_authenticated%}
+	    	<a class="navbar-brand" id="brnd" href="{%url 'home'%}">evement</a>
+    	{%else%}
+    		<a class="navbar-brand" id="brnd" href="{%url 'front'%}">evement</a>
+    	{%endif%}
+	     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 	      <span class="navbar-toggler-icon"></span>
 	    </button>
-	    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-	      <ul class="navbar-nav" id="homenav">
+   		 <div class="collapse navbar-collapse" id="navbarNav">
+
+	      <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="homenav">
 	        {%if user.is_authenticated%}
+	         	<li class="nav-item">
+		          <a class="nav-link " id="homeLink" href="{%url 'front'%}">Articles</a>
+		        </li>
 		        <li class="nav-item">
 		          <a class="nav-link " id="homeLink" href="{%url 'logout'%}">logout</a>
 		        </li>
 		        <li class="nav-item">
 		          <a class="nav-link " id="homeLink" href="{%url 'about-us'%}">about us</a>
 		        </li>
-		        <div>
-			        <li class="nav-item nav-item-profile">
-			          <img  class="nav-image" src="{{request.user.name.profile.image.url}}" width= '50%'>
-			          <a class="nav-link" id="profile" href="{%url 'profile'%}">{{request.user.name}}</a>
-			        </li>
-		        </div>
+		        <li class="nav-item nav-item-profile">
+		          <img  class="nav-image" src="{{request.user.profile.image.url}}" width= '50%'>
+		          <a class="nav-link" id="profile" href="{%url 'profile'%}">{{request.user.name}}</a>
+		        </li>
 		    {%else%}
+				<li class="nav-item">
+					<a class="nav-link " id="homeLink" href="{%url 'about-us'%}">about us</a>
+				</li>
 		        <li class="nav-item">
 		          <a class="nav-link " id="homeLink" href="{%url 'login' %}">login</a>
-		        </li>
-		        <li class="nav-item">
-		          <a class="nav-link " id="homeLink" href="{%url 'about-us'%}">about us</a>
 		        </li>
 		        <li class="nav-item">
 		          <a class="nav-link " id="homeLink" href="{%url 'register' %}">Register</a>
@@ -62,6 +68,11 @@
 	    </div>
 	  </div>
 	</nav>
+
+
+
+
+
 
 
 	{% if messages %}

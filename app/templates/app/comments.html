@@ -1,0 +1,19 @@
+
+{%extends 'app/base.html'%}
+{%block content%}
+<ul class="list-group">
+  {%for comment in comments%}
+  <li class="list-group-item">{{comment.comment}} <span style="margin-left:5rem;"> by {{comment.user}}</span></li>
+  {%endfor%}
+</ul>
+
+<form method="POST" action="{%url 'comments'%}">
+  {%csrf_token%}
+  <div class="mb-3">
+    <textarea class="form-control" name="comment" rows="3"></textarea>
+    <button type="submit">Comment</button>
+  </div>
+</form>
+
+
+{%endblock content%}

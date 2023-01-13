@@ -62,6 +62,8 @@ INSTALLED_APPS = [
     'app',
     'rest_framework',
     'crispy_forms',
+    'phonenumber_field',
+    'users'
 ]
 
 MIDDLEWARE = [
@@ -100,9 +102,13 @@ WSGI_APPLICATION = 'events.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'events',
+        'USER': 'root',
+        'PASSWORD': 'Lazirbijay@123',
+        'HOST':'localhost',
+        'PORT':'3306',
+        }
 }
 
 
@@ -126,10 +132,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 REST_FRAMEWORK={
     "DEFAULT_AUTHENTICATION_CLASSES":[
-        'rest_framework.authentication.SessionAuthentication',      
-    ],
-    "DEFAULT_PERMISSION_CLASSES":[
-        'rest_framework.permissions.IsAuthenticated'
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',      
     ],
     'DEFAULT_PAGINATION_CLASS': ['rest_framework.pagination.PageNumberPagination'],
     'PAGE_SIZE': 8,
@@ -167,7 +171,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'app.User'
+AUTH_USER_MODEL = 'users.User'
 
 CRISPY_TEMPLATE_PACK="bootstrap4"
 LOGIN_REDIRECT_URL="home"
