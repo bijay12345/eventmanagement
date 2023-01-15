@@ -374,10 +374,27 @@ label.star:before {
 
 
 .end-list-hr{
-  margin-bottom: 2rem;
-  margin-top: 1.6rem;
-  border-style: dotted;
+  margin: 5px;
 }
+
+.like-interest-div{
+  position: relative;
+  display: flex;
+}
+
+.like-count{
+  font-size: 70%;
+  margin: .3rem 0rem .2rem 0rem;
+}
+
+.interest-count{
+  position: absolute;
+  right: 3%;
+  font-size: 70%;
+  margin: .3rem 0rem .2rem 0rem;
+}
+
+
 
 .list-check-mark-no{
   border: 0;
@@ -426,6 +443,7 @@ label.star:before {
 .interest-row{
   display: flex;
   position: relative;
+  padding: 2% 0% 5%;
 }
 .comment-icon{
   position: absolute;
@@ -465,12 +483,14 @@ label.star:before {
   display: flex;
 }
 
-.img1{
+.img1-div{
   display: flex;
+  width: 50%;
 }
 
-.img2{
+.img2-div{
   display: flex;
+  width: 50%;
 }
 
 .image-section-top-img{
@@ -570,6 +590,10 @@ label.star:before {
 
 /*PROFILE DESIGN*/
 
+.profile-img-change{
+
+}
+
 .profile-top-info{
   background-color: #F1F6F5;
   border-top-right-radius: 2rem;
@@ -596,6 +620,24 @@ label.star:before {
 }
 .profile-div-img{
   width: fit-content;
+  position: relative;
+}
+
+#profile-input{
+  position: absolute;
+  bottom: 17%;
+  left: 7%;
+}
+#profile-img-change{
+  width: 75%;
+  margin-left: 5%;
+}
+.profile-img-btn{
+  margin-top: 7%;
+  margin-left: 24%;
+  font-size: .8rem;
+  border: .5px solid;
+  color: brown;
 }
 
 .profilebuttons{

@@ -85,13 +85,14 @@ class ProfileView(APIView):
 		profile=get_object_or_404(Profile,user=request.user.id)
 		user = get_object_or_404(User,id=request.user.id)
 
+		print(request.data)
+
 		data=request.data
 		name=data.get("username")
 		email=data.get("email")
 		phonenumber=data.get("phonenumber")
 		bio=data.get("bio")
 		location=data.get("location")
-		image=data.get("image")
 
 		userdata={
 		"name":name,
@@ -101,7 +102,6 @@ class ProfileView(APIView):
 		"phonenumber":phonenumber,
 		"bio":bio,
 		"location":location,
-		"image":image,
 		}
 
 		userSerializer=ProfileUserSerializer(user,data=userdata,partial=True)
@@ -120,3 +120,10 @@ class ProfileView(APIView):
 			print(profile_serializer.errors)
 
 		return redirect("profile")
+
+class profilePicUpdate(APIView):
+	def post(self,request,format=None):
+		profile=get_object_or_404(Profile,user=request.user.id)
+		data=dict(request.POST.items())
+		print(data)
+		return Response({"msg":data})

@@ -26,20 +26,23 @@
 					<div class="design2-img-detail">
 						<div class="img-detail-heading-star">
 							<p class="design2-heading design2-event-img-heading">{{event.name}}</p>
-							<p class="text-muted design2-heading likedetail" style="font-size: .8rem;">
-								{{event.likers_count}} Likes
+
+							<p class="design2-heading likedetail">
+								<span><i class="fa-solid fa-star"></i></span> {{event.avgrating}}
 							</p>
+							
 						</div>
 						<div class="img-detail-heading-star">
 							<p class="text-muted design2-heading design2-location-img-heading">{{event.location}}</p>
-							<p class="design2-heading design2-para-heading likedetail">
-								<span><i class="fa-solid fa-star"></i></span> {{event.avgrating}}
-								
-							</p>
 						</div>
 						<p class="text-muted detail-date">{{event.evedate}}</p>
 					</div>
                     <!-- END OF EVENT INTEREST BUTTON -->
+                    <div class="like-interest-div">
+                    	<p class="like-count">{{event.likers_count}} likes</p>
+                    	<p class="interest-count">{{event.no_of_interested}} interested</p>
+                    </div>
+                    <hr class="end-list-hr">
 			<div class="interest-row">
 				<form action="{% url 'interest'%}" class="interest" method="POST">
 			      {% csrf_token %}
@@ -58,17 +61,17 @@
 
 					<a href="" class="comment-icon"><i class="fa-regular fa-comment"></i></a>
 			</div>
+			
 
 
                     <!-- DETAIL BUTTON -->
 					<a class="btn" id="link-detail-btn" href="{%url 'detail' event.slug%}">View details &raquo;</a>
 					<!-- END OF DETAIL BUTTON -->
-					<hr class="end-list-hr">
 				</div>
 			{%endfor%}
 
 			<div>
-				<div class="pagination-div">
+				<div class="pagination-div" style="margin-top: 3%;">
 					{%if page_obj.has_previous%}
 						<a class="btn" id="pagin-btn-p" href="?page={{page_obj.previous_page_number}}">Previous</a>
 					{%endif%}
