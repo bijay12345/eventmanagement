@@ -103,9 +103,9 @@ WSGI_APPLICATION = 'events.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'events',
-        'USER': 'root',
-        'PASSWORD': 'Lazirbijay@123',
+        'NAME': env("NAME"),
+        'USER': env("USER"),
+        'PASSWORD': env("Lazirbijay@123"),
         'HOST':'localhost',
         'PORT':'3306',
         }
