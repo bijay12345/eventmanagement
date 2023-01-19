@@ -1,7 +1,7 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializers import (LikeSerializer,EventSerializer,
+from .serializers import (LikeSerializer,EventSerializer,EventCustomerSerializer,
 	InterestSerializer,RatingSerializer,CommentSerializer,CommentSerializer2)
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.reverse import reverse
@@ -14,6 +14,9 @@ from django.contrib import messages
 import datetime
 from rest_framework.authtoken.models import Token
 from django.core.paginator import Paginator
+from eventhost.models import EventHost
+from eventhost.serializers import EventHostSerializer
+
 
 
 
@@ -181,6 +184,53 @@ class CommentApiView(APIView):
 			serializer.save()
 			print("saving comment...")
 		return redirect("detail",slug=event_id)
+
+
+
+
+class EventBookingApi(APIView):
+	renderer_classes=[TemplateHTMLRenderer]
+	def get(self,request,id=None,format=None):
+		eventhosts=EventHost.objects.get(id=id)
+		serializer=EventHostSerializer(eventhosts)
+		return Response({"data":serializer.data},template_name="app/eventbooking.html")
+
+	def post(self,request,format=None):
+		data=dict(request.POST.items())
+
+		functionname=data.get("functionname")
+		user = request.user.id  
+		description = data.get("description")
+		contact=data.get("contact")
+		location=data.get("location")
+		email=data.get("email")
+		managingfirm=data.get("managementid")
+		manager=get_object_or_404(EventHost,id=managingfirm)
+		evedate=data.get("date")
+
+		context={
+		"email":email,
+		"function_name":functionname,
+		"customers":user,
+		"description":description,
+		"contact":contact,
+		"location":location,
+		"managingfirm":manager.id,
+		"evedate":evedate
+		}
+
+		serializer=EventSerializer(data=context)
+
+		if serializer.is_valid():
+			serializer.save()
+			messages.success(request,f"Hii {request.user.name}! You have successfully booked an event, For more details please visit your profile.") 
+		else:
+			print(serializer.errors)
+
+		return redirect("hosts")
+
+
+
 
 
 def design2(request):

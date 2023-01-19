@@ -25,7 +25,7 @@
 					</div>	
 					<div class="design2-img-detail">
 						<div class="img-detail-heading-star">
-							<p class="design2-heading design2-event-img-heading">{{event.name}}</p>
+							<p class="design2-heading design2-event-img-heading">{{event.function_name}}</p>
 
 							<p class="design2-heading likedetail">
 								<span><i class="fa-solid fa-star"></i></span> {{event.avgrating}}
@@ -40,19 +40,18 @@
                     <!-- END OF EVENT INTEREST BUTTON -->
                     <div class="like-interest-div">
                     	<p class="like-count">{{event.likers_count}} likes</p>
+                    	<p class="comment-count">{{event.no_of_comments}} Comments</p>
                     	<p class="interest-count">{{event.no_of_interested}} interested</p>
                     </div>
                     <hr class="end-list-hr">
-			<div class="interest-row">
+<!-- 			<div class="interest-row">
 				<form action="{% url 'interest'%}" class="interest" method="POST">
 			      {% csrf_token %}
 			      	{%if request.user.id in event.interested %}
-<!-- 				      	<small class="text-muted" style="font-size: .7rem;">thank you for checking in</small> -->
 				      	<button name="interest_id" type="submit" value="{{event.slug}}" class="list-check-mark-no">
 				          <i class="fa-solid fa-check-double check-yes" id="check-btn" style="color: blue;"></i>
 				        </button>
 			        {%else%}
-<!-- 			       	    <small class="text-muted" style="font-size: .7rem;">check in</small>  -->
 			        	<button name="interest_id" type="submit" value="{{event.slug}}" class="list-check-mark-yes">
 				          <i class="fa-solid fa-check-double" id="check-btn" style="color: black;"></i>
 				        </button>    
@@ -60,7 +59,7 @@
 			    </form>	
 
 					<a href="" class="comment-icon"><i class="fa-regular fa-comment"></i></a>
-			</div>
+			</div> -->
 			
 
 

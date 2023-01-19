@@ -1,0 +1,54 @@
+{%extends 'eventhost/base.html'%}
+{% block content %}
+
+{{data.management_name}}
+
+<div class=" container" style="width: 45%;margin-top: 5%; line-height: 3rem;">
+    <form method="POST" action="">
+        {% csrf_token %}
+             <legend class="border-bottom mb-4">Fill the information</legend>
+
+              <div class="mb-3 row" style="margin-top: 5%;">
+                <label for="email" class="col-sm-2 col-form-label">Email: </label>
+                <div class="col-sm-10">
+                  <input type="email" class="form-control" id="email" name="email">
+                </div>
+              </div>
+
+              <div class="mb-3 row" style="margin-top: 5%;">
+                <label for="function" class="col-sm-2 col-form-label">Function Name: </label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="funuction" name="functionname">
+                </div>
+              </div>
+
+              <div class="mb-3 row" style="margin-top: 5%;">
+                <label for="description" class="col-sm-2 col-form-label">description </label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="description" name="description">
+                </div>
+              </div>
+
+              <div class="mb-3 row" style="margin-top: 5%;">
+                <label for="contact" class="col-sm-2 col-form-label"> contact</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="contact" name="contact">
+                </div>
+              </div>
+
+              <div class="mb-3 row" style="margin-top: 5%;">
+                <label for="location" class="col-sm-2 col-form-label"> location</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="location" name="location">
+                </div>
+              </div>
+
+	        <div class="mt-3 mb-4">
+	            <button type="submit" name="managementid" value="{{data.id}}">Register</button>
+	        </div>
+    </form>
+</div>
+
+
+
+{% endblock content %}

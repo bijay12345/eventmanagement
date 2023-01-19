@@ -1,0 +1,44 @@
+@import "hosts.css";
+@import "hostdetail.css";
+
+nav{
+	background-image: linear-gradient(135deg, #CE9FFC 10%, #7367F0 100%);
+}
+
+#nav-padding{
+padding:1% 0% 1% 15%;
+
+}
+
+.navbar-nav{
+	margin: auto;
+}
+
+#navbran{
+	color: linear-gradient(135deg, #CE9FFC 10%, #7367F0 100%);
+	font-size: 2rem;
+	font-family: 'Anton', sans-serif;
+
+}
+
+#nav-links{
+	color: white;
+	font-size: 1.5rem;
+	font-family: 'Bebas Neue', cursive;
+	text-decoration: underline;
+}
+
+#nav-links:hover{
+  text-decoration: underline;
+  color: purple;
+  font-weight: bolder;
+  font-size: 2rem;
+}
+
+
+.orgainser-body{
+	font-family: 'Montserrat', sans-serif;	
+}
+
+
+

@@ -1,9 +1,8 @@
 from django.contrib import admin
 from app.models import Rating,Events,Comment
 
-@admin.register(Events)
-class EventAdmin(admin.ModelAdmin):
-	list_display=['id','name','location','evedate']
+
+admin.site.register(Events)
 
 admin.site.register(Rating)
 

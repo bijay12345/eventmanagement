@@ -63,7 +63,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'crispy_forms',
     'phonenumber_field',
-    'users'
+    'users',
+    'eventhost',
 ]
 
 MIDDLEWARE = [

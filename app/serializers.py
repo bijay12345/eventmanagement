@@ -5,24 +5,27 @@ from users.models import User
 class EventSerializer(serializers.ModelSerializer):
 	likers=serializers.StringRelatedField(many=True,read_only=True)
 	likers_count=serializers.SerializerMethodField()
+	no_of_comments=serializers.SerializerMethodField()
+	managingfirmname=serializers.SerializerMethodField()
 	avgrating=serializers.SerializerMethodField()
-	comments=serializers.StringRelatedField(many=True)
+	comments=serializers.StringRelatedField(many=True,required=False)
 	no_of_interested=serializers.SerializerMethodField()
+	evedate=serializers.DateField()
 
 	image = serializers.ImageField(
-            max_length=None, use_url=True
+            max_length=None, use_url=True,required=False
         )
 	image2 = serializers.ImageField(
-            max_length=None, use_url=True
+            max_length=None, use_url=True,required=False
         )
 	image3 = serializers.ImageField(
-            max_length=None, use_url=True
+            max_length=None, use_url=True,required=False
         )
 	image4 = serializers.ImageField(
-            max_length=None, use_url=True
+            max_length=None, use_url=True,required=False
         )
 	image5 = serializers.ImageField(
-            max_length=None, use_url=True
+            max_length=None, use_url=True,required=False
         )
 
 
@@ -33,7 +36,11 @@ class EventSerializer(serializers.ModelSerializer):
 	def get_no_of_interested(self,obj):
 		return obj.interested.count()
 
+	def get_no_of_comments(self,obj):
+		return obj.comments.count()
 
+	def get_managingfirmname(self,obj):
+		return obj.managingfirm.management_name
 
 	def get_avgrating(self,obj):
 		ratings=Rating.objects.filter(event=obj)
@@ -64,6 +71,7 @@ class InterestSerializer(serializers.ModelSerializer):
 		model=Events 
 		fields=["interested"]
 	
+	
 class RatingSerializer(serializers.ModelSerializer):
 	class Meta:
 		model=Rating
@@ -86,3 +94,10 @@ class CommentSerializer2(serializers.ModelSerializer):
 	class Meta:
 		model=Comment  
 		fields = ["user","event","comment","date_commented"]
+
+
+
+class EventCustomerSerializer(serializers.ModelSerializer):
+	class Meta:
+		model=Events
+		fields=["customers","managingfirm","functionname","description","contact","location","email"]

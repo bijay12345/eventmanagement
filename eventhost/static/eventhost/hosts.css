@@ -1,0 +1,55 @@
+
+.host-top{
+	display: flex;
+	padding: 4% 12%;
+}
+
+.host-img-div{
+	width: 50%;
+}
+
+.host-img-top{
+  border-radius: 6%;
+  border: 1px solid cadetblue;
+  padding: 1%;
+}
+
+.host-title{
+	width: fit-content;
+	text-decoration: underline;
+}
+
+.host-info{
+	padding: 3% 1% 0% 2%;
+	width: 50%;
+}
+
+
+.host-text{
+  text-align: justify;
+} 
+
+.detail-link{
+	margin-top: 6%;
+}
+
+.detail-btn{
+	text-decoration: none;
+	padding: 2%;
+	background: cadetblue;
+	font-size: 1.2rem;
+	color: white;
+	margin: 0rem 0.5rem;
+	border: 2px solid white;
+}
+
+.book-now{
+	background: #8647fd;
+}
+
+.hostline{
+  width: 90%;
+  margin: auto;
+}
+
+

@@ -1,0 +1,46 @@
+{%extends 'app/base.html'%}
+{%block content%}
+<div class="content-section container" style="width: 45%;margin-top: 5%; line-height: 3rem;">
+    <form method="POST" action="{%url 'hostregister' %}">
+        {% csrf_token %}
+             <legend class="border-bottom mb-4">Register as a host</legend>
+
+              <div class="mb-3 row" style="margin-top: 5%;">
+                <label for="username" class="col-sm-2 col-form-label">Username</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="username" name="name">
+                </div>
+              </div>
+
+              <div class="mb-3 row" style="margin-top: 5%;">
+                <label for="Email" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                  <input type="email" class="form-control" id="email" name="email">
+                </div>
+              </div>
+
+              <div class="mb-3 row" style="margin-top: 5%;">
+                <label for="password" class="col-sm-2 col-form-label">Password</label>
+                <div class="col-sm-10">
+                  <input type="password" class="form-control" id="password" name="password">
+                </div>
+              </div>
+
+              <div class="mb-3 row" style="margin-top: 5%;">
+                <label for="password2" class="col-sm-2 col-form-label">Password Confirm</label>
+                <div class="col-sm-10">
+                  <input type="password" class="form-control" id="password2" name="password2">
+                </div>
+              </div>
+
+        <div class="mt-3 mb-4">
+            <button class="authform2" type="submit">Register</button>
+        </div>
+    </form>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            Have An Account? <a class="ml-2" href="{%url 'hostlogin'%}">Login</a>
+        </small>
+    </div>
+</div>
+{%endblock content%}

@@ -3,10 +3,16 @@ from django.core.validators import MaxValueValidator
 from PIL import Image
 from django.template.defaultfilters import slugify
 from users.models import User
+from eventhost.models import EventHost
+import datetime
 
 class Events(models.Model):
-	name=models.CharField(max_length=500)
+	function_name=models.CharField(max_length=500)
+	customers = models.ForeignKey(User,on_delete=models.CASCADE, related_name="customers")
+	managingfirm=models.ForeignKey(EventHost,on_delete=models.CASCADE,related_name="managingfirm")
 	location=models.CharField(max_length=100)
+	contact=models.CharField(max_length=10)
+	email=models.EmailField(max_length=200)
 	evedate= models.DateField()
 	description=models.TextField()
 	slug=models.CharField(max_length=1000,null=True,blank=True)
@@ -23,11 +29,12 @@ class Events(models.Model):
 
 
 	def __str__(self):
-		return self.name
+		return self.function_name
 
 
 	def save(self,*args,**kwargs):
-		super().save(*args,**kwargs)
+		if not self.slug:
+			self.slug=slugify(self.function_name+"-"+str(datetime.datetime.now()))
 		
 		image=Image.open(self.image.path)
 		image2=Image.open(self.image2.path)
@@ -60,8 +67,6 @@ class Events(models.Model):
 			image5.thumbnail(output)
 			image5.save(self.image5.path)
 
-		if not self.slug:
-			self.slug=slugify(self.name+"-"+str(self.evedate))
 		return super().save(*args,**kwargs)
 
 
@@ -85,7 +90,7 @@ class Comment(models.Model):
 
 
 	def __str__(self):
-		return f"{self.user.name}: {self.event.name}"
+		return f"{self.user.name}: {self.event.function_name}"
 
 
 

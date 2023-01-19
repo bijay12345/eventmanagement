@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import HomeView,LikeView,InterestView,RatingView,aboutus,ArticleView,design3,design2,CommentApiView
+from .views import HomeView,LikeView,InterestView,RatingView,aboutus,ArticleView,design3,design2,CommentApiView,EventBookingApi
 from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
@@ -16,4 +16,6 @@ urlpatterns = [
     path("design3/",design3,name="design3"),
     path('comments/',CommentApiView.as_view(),name="comments"),
     path("comments/<int:id>/",CommentApiView.as_view(),name="comment"),
+    path("eventbooking/<int:id>",EventBookingApi.as_view(),name="eventbooking"),
+    path("eventbooking/",EventBookingApi.as_view(),name="eventbooking-post")
 ]

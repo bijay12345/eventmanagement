@@ -9,6 +9,8 @@ from rest_framework.response import Response
 from django.contrib import messages
 from rest_framework.permissions import IsAuthenticated,AllowAny
 from .serializers import (UserSerializer,LoginSerializer,ProfileSerializer,ProfileUserSerializer)
+from app.models import Events
+from app.serializers import EventSerializer
 
 class UserRegistrationView(APIView):
 	permission_classes=[AllowAny]
@@ -79,7 +81,10 @@ class ProfileView(APIView):
 		profile_serializer=ProfileSerializer(profile)
 		user_serializer=ProfileUserSerializer(user)
 
-		return Response({"profiledata":profile_serializer.data,"userdata":user_serializer.data})
+		eventbooked=Events.objects.all().filter(customers=request.user.id)
+		events=EventSerializer(eventbooked,many=True)		
+
+		return Response({"profiledata":profile_serializer.data,"userdata":user_serializer.data,"events":events.data})
 
 	def post(self,request,format=None):
 		profile=get_object_or_404(Profile,user=request.user.id)
