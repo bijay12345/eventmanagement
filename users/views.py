@@ -17,7 +17,7 @@ class UserRegistrationView(APIView):
 	renderer_classes = [TemplateHTMLRenderer]
 
 	def get(self, request, format=None):
-		return Response(template_name="users/register.html")
+		return Response({"R_active":"active"},template_name="users/register.html")
 
 	def post(self,request,format=None):
 		data=request.data
@@ -40,7 +40,7 @@ class UserLoginView(APIView):
 
 	def get(self, request, format=None):
 		if not request.user.is_authenticated:
-			return Response(template_name="users/login.html")
+			return Response({"LO_active":"active"},template_name="users/login.html")
 		else:
 			return redirect('home')
 
@@ -84,7 +84,7 @@ class ProfileView(APIView):
 		eventbooked=Events.objects.all().filter(customers=request.user.id)
 		events=EventSerializer(eventbooked,many=True)		
 
-		return Response({"profiledata":profile_serializer.data,"userdata":user_serializer.data,"events":events.data})
+		return Response({"profiledata":profile_serializer.data,"userdata":user_serializer.data,"events":events.data,"P_active":"active"})
 
 	def post(self,request,format=None):
 		profile=get_object_or_404(Profile,user=request.user.id)

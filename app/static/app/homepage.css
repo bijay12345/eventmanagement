@@ -2,6 +2,15 @@
   border-radius: 1rem;
 }
 
+.list-card-link{
+  text-decoration: none;
+  color: black;
+}
+
+.list-card-link:hover{
+  color: black;
+}
+
 .design2-top-section{
   padding: 5rem;
 }
@@ -101,15 +110,6 @@
 
 #check-btn{
   font-size: 1.4rem;
-}
-
-#link-detail-btn{
-  width: 90%;
-  margin-left: 5%;
-  padding: 0;
-  border-radius: 2px;
-  margin-top: 4%;
-  color: grey;
 }
 
 .pagination-div{

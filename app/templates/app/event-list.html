@@ -5,7 +5,8 @@
 	<div class="design2-top-section">
 		<div class="row" style="width: 100%;">
 			{%for event in page_obj%}
-				<div class="col-lg-3 col-md-6">
+			
+				<div class="col-lg-3 col-md-6" style="margin-bottom: 5%;">
 					<div>
 						<div class="design2-like-button-div">
 							<form action="{% url 'like' %}" method="POST">
@@ -21,7 +22,9 @@
 				         	  {%endif%}
 						    </form>
 						</div>
-						<img class="list-img" width="100%" height="300px" src="{{event.image}}">
+						<a href="{%url 'detail' event.slug%}">
+							<img class="list-img" width="100%" height="300px" src="{{event.image}}">
+						</a>
 					</div>	
 					<div class="design2-img-detail">
 						<div class="img-detail-heading-star">
@@ -35,7 +38,7 @@
 						<div class="img-detail-heading-star">
 							<p class="text-muted design2-heading design2-location-img-heading">{{event.location}}</p>
 						</div>
-						<p class="text-muted detail-date">{{event.evedate}}</p>
+						<small class="text-muted detail-date"><i class="fa-regular fa-calendar-days"></i> {{event.evedate}} </small>
 					</div>
                     <!-- END OF EVENT INTEREST BUTTON -->
                     <div class="like-interest-div">
@@ -44,29 +47,8 @@
                     	<p class="interest-count">{{event.no_of_interested}} interested</p>
                     </div>
                     <hr class="end-list-hr">
-<!-- 			<div class="interest-row">
-				<form action="{% url 'interest'%}" class="interest" method="POST">
-			      {% csrf_token %}
-			      	{%if request.user.id in event.interested %}
-				      	<button name="interest_id" type="submit" value="{{event.slug}}" class="list-check-mark-no">
-				          <i class="fa-solid fa-check-double check-yes" id="check-btn" style="color: blue;"></i>
-				        </button>
-			        {%else%}
-			        	<button name="interest_id" type="submit" value="{{event.slug}}" class="list-check-mark-yes">
-				          <i class="fa-solid fa-check-double" id="check-btn" style="color: black;"></i>
-				        </button>    
-			        {%endif%}
-			    </form>	
-
-					<a href="" class="comment-icon"><i class="fa-regular fa-comment"></i></a>
-			</div> -->
-			
-
-
-                    <!-- DETAIL BUTTON -->
-					<a class="btn" id="link-detail-btn" href="{%url 'detail' event.slug%}">View details &raquo;</a>
-					<!-- END OF DETAIL BUTTON -->
 				</div>
+		
 			{%endfor%}
 
 			<div>

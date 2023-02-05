@@ -4,18 +4,35 @@
 	padding: 4% 12%;
 }
 
+.host-list-title{
+	text-align: center; 
+	background: ghostwhite;
+	padding: 1%;
+	font-family: 'Anton', sans-serif;
+	text-decoration: underline;
+}
+
 .host-img-div{
 	width: 50%;
 }
 
 .host-img-top{
-  border-radius: 6%;
-  border: 1px solid cadetblue;
-  padding: 1%;
+	width: 400px;
+	height: 50vh;
+	border-radius: 10px;
+	background-size: cover;
+	object-fit: cover;
+	background-position: center;
+	box-shadow: 20px 20px 34px rgba(0, 0, 0, 0.03);
+	cursor: pointer;
 }
 
+.host-img-top:hover{
+	box-shadow: 10px 10px 54px rgba(0,0,0,0.15);
+}
+
+
 .host-title{
-	width: fit-content;
 	text-decoration: underline;
 }
 

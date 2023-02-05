@@ -1,11 +1,14 @@
 
-
-div.stars {
-  width: 270px; 
+div.stars { 
   display: inline-block;
   text-align: center;
 }
  
+ .star-form{
+  display: flex;
+  width: max-content;
+ }
+
 input.star { display: none; }
  
 label.star {
@@ -46,7 +49,7 @@ label.star:before {
 }
 .design-detail-top{
   width: fit-content;
-  margin: 0% 2% 0% 0%;
+  margin: 0% 2% 0% 2%;
 }
 
 .description-section{
@@ -56,45 +59,7 @@ label.star:before {
 /*Image section*/
 
 
-.image-section{
-  display: flex;
-}
 
-.img1-div{
-  display: flex;
-  width: 50%;
-}
-
-.img2-div{
-  display: flex;
-  width: 50%;
-}
-
-.image-section-top-img{
-  padding: .5% 1% 0% 0%;
-}
-.image-section-bottom-img{
-  margin-top: .3%;
-}
-
-.detail-image-top-content{
-  padding: 0.5% 0.5% 0% 0.5%;
-}
-.detail-image-bottom-content{
- padding: 0.5% 0.5% 1% 0.5%;
-}
-
-.img2{
-  border-top-right-radius: 1rem;
-}
-.img4{
-  border-bottom-right-radius: 1rem;
-}
-
-.image-section-top-img{
-  border-top-left-radius: 1rem;
-  border-bottom-left-radius: 1rem;
-}
 
 .design3-top-section{
   margin-bottom: 2rem;
@@ -104,28 +69,32 @@ label.star:before {
   padding: 6%;
 }
 
-.rate-title{
-  margin-left: 15%;
-} 
 
 .ratebutton{
-  background: #D3756B;
-  width: 60%;
-  padding: 2%;
-  border:1px #A75D5D;
+  background: #0A2647;
+  color: white;
+  height: fit-content;
+  margin: auto auto auto 2rem;
   border-radius: 2px;
-  border-color: #A75D5D;
+  padding: 5px 20px;
+
 }
 
 
-.ratebutton:hover{
-  background: #FFC3A1;
+.checkbutton{
+  border: none;
+  background: transparent;
+}
+
+.checkbutton-checked:hover{
+
 }
 
 #comment-btn{
+  background: #0A2647;
+  color: white;
   border: none;
   margin-top: 2%;
-  background: aqua;
   border-radius: 3px;
   padding: 7px;
 }
@@ -136,11 +105,12 @@ label.star:before {
 
 .comment-div{
   padding:0% 9% 0% 0%;
+  margin-bottom: 2%;
 }
 
 .comment-div-top{
   display: flex;
-  margin-bottom: 2%;
+  margin-bottom: 1%;
 }
 
 .comment-img{
@@ -159,3 +129,55 @@ label.star:before {
   width: fit-content;
   margin: 0px;
 }
+
+
+
+
+
+
+
+
+
+
+#prodetails{
+    display: flex;
+    margin-top: 20px;
+    padding: 0px 0px;
+}
+
+#prodetails .single-pro-image{
+  width: 50%;
+  margin-right: 40px;
+}
+
+
+.small-img-group{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.small-img-col{
+  flex-basis: 24%;
+  cursor: pointer;
+  margin: 3px;
+}
+
+
+#prodetails{
+  display: flex;
+  margin-top: 20px;
+}
+
+
+#prodetails .single-pro-details{
+  width: 50%;
+}
+
+
+#prodetails .single-pro-details h2{
+  font-size: 26px;
+  font-weight: 700;
+  text-decoration: underline;
+}
+

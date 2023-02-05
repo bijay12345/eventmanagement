@@ -78,10 +78,11 @@
       
                 <div class="col-lg-9 col-md-9">
                     <div class="card-body profile-event-card-detail">
-                      <p class="card-text"><b>Organised by: </b>{{event.managingfirmname}} </p>
+                      <p class="card-text"><a href="{%url 'host-detail' event.managingfirm%}"><b>Organised by: </b>{{event.managingfirmname}} </a></p>
                       <p class="card-text"><b>Description: </b>{{event.description|truncatechars:120}}</p>
                       <p class="card-text"></p>
-                      <p class="card-text"><b>Commencing on</b> - {{event.evedate}}</p>
+                      <p class="card-text"><b>Commencing on</b> - {{event.eventdate}}</p>
+                      <p class="card-text"><b>booked on</b> - {{event.bookingdate}}</p>
                       <a href="{%url 'detail' event.slug%}" class="profile-update-btn profile-event-btn">View Detail</a>
                     </div>
                 </div>

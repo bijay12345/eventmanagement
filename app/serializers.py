@@ -1,6 +1,9 @@
 from rest_framework import serializers 
 from .models import Events,Rating,Comment
 from users.models import User
+from datetime import date
+
+
 
 class EventSerializer(serializers.ModelSerializer):
 	likers=serializers.StringRelatedField(many=True,read_only=True)
@@ -9,8 +12,9 @@ class EventSerializer(serializers.ModelSerializer):
 	managingfirmname=serializers.SerializerMethodField()
 	avgrating=serializers.SerializerMethodField()
 	comments=serializers.StringRelatedField(many=True,required=False)
-	no_of_interested=serializers.SerializerMethodField()
-	evedate=serializers.DateField()
+	no_of_interested=serializers.SerializerMethodField(required=False)
+	eventdate=serializers.SerializerMethodField()
+	bookingdate=serializers.SerializerMethodField()
 
 	image = serializers.ImageField(
             max_length=None, use_url=True,required=False
@@ -53,9 +57,21 @@ class EventSerializer(serializers.ModelSerializer):
 		s=sum/count
 		return round(s,1)
 
+
+	def get_eventdate(self,obj):
+		return obj.evedate
+
+	def get_bookingdate(self,obj):
+		return obj.bookingdate
+
+
 	class Meta:
 		model=Events
 		fields='__all__'
+
+
+
+
 
 class LikeSerializer(serializers.ModelSerializer):
 	likers=serializers.StringRelatedField(many=True,read_only=True)
@@ -90,11 +106,15 @@ class CommentSerializer(serializers.ModelSerializer):
 class CommentSerializer2(serializers.ModelSerializer):
 	event=serializers.StringRelatedField(read_only=True)
 	user=serializers.StringRelatedField(read_only=True)
-	date_commented=serializers.DateTimeField()
+	date_comment=serializers.SerializerMethodField()
+
+	def get_date_comment(self,obj):
+		date = obj.date_commented
+		return date
+
 	class Meta:
 		model=Comment  
-		fields = ["user","event","comment","date_commented"]
-
+		fields = ["user","event","comment","date_comment"]
 
 
 class EventCustomerSerializer(serializers.ModelSerializer):

@@ -14,6 +14,7 @@ class Events(models.Model):
 	contact=models.CharField(max_length=10)
 	email=models.EmailField(max_length=200)
 	evedate= models.DateField()
+	bookingdate=models.DateField(auto_now_add=True)
 	description=models.TextField()
 	slug=models.CharField(max_length=1000,null=True,blank=True)
 	likers=models.ManyToManyField(User,related_name='likers',blank=True)
@@ -91,6 +92,9 @@ class Comment(models.Model):
 
 	def __str__(self):
 		return f"{self.user.name}: {self.event.function_name}"
+
+	class Meta:
+		ordering=['date_commented']
 
 
 

@@ -173,6 +173,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.User'
+AUTH_HOST_MODEL = 'eventhost.Host'
 
 CRISPY_TEMPLATE_PACK="bootstrap4"
 LOGIN_REDIRECT_URL="home"

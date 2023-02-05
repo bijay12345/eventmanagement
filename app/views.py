@@ -16,7 +16,7 @@ from rest_framework.authtoken.models import Token
 from django.core.paginator import Paginator
 from eventhost.models import EventHost
 from eventhost.serializers import EventHostSerializer
-
+from datetime import datetime
 
 
 
@@ -43,8 +43,10 @@ class HomeView(APIView):
 			"event":serializer.data,
 			"rated":rated_,
 			"comments":c_serializer.data,
-
+			"H_active":"active",
 			}
+
+			print(datetime.now())
 
 			return Response(context,template_name="app/event-detail.html")
 		else:
@@ -58,9 +60,10 @@ class HomeView(APIView):
 			context={
 			"page_obj":page_obj,
 			"events":serializer.data,
+			"H_active":"active",
 			}
 
-			return Response(context,template_name="app/design-list.html")
+			return Response(context,template_name="app/event-list.html")
 
 
 
@@ -150,7 +153,7 @@ class ArticleView(APIView):
 	def get(self,reqest,format=None):
 		recent_events=Events.objects.all()[:3]
 		serializer=EventSerializer(recent_events,many=True)
-		return Response({"recentevents":serializer.data})
+		return Response({"recentevents":serializer.data,"A_active":"active",})
 
 
 class CommentApiView(APIView):
@@ -183,6 +186,8 @@ class CommentApiView(APIView):
 		if serializer.is_valid():
 			serializer.save()
 			print("saving comment...")
+		else:
+			print(serializer.errors)
 		return redirect("detail",slug=event_id)
 
 
@@ -193,7 +198,7 @@ class EventBookingApi(APIView):
 	def get(self,request,id=None,format=None):
 		eventhosts=EventHost.objects.get(id=id)
 		serializer=EventHostSerializer(eventhosts)
-		return Response({"data":serializer.data},template_name="app/eventbooking.html")
+		return Response({"data":serializer.data,"B_active":"active",},template_name="app/eventbooking.html")
 
 	def post(self,request,format=None):
 		data=dict(request.POST.items())

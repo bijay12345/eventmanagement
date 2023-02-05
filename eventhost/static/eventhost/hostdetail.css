@@ -52,7 +52,7 @@
 /*     EVENT BOOKING     */
 
 .eventform-information{
-	padding: 5% 10%;
+	padding: 2% 10% 5%;
 }
 
 #eventbookformleft{
@@ -89,4 +89,35 @@
 legend{
     text-align: center;
     font-weight: 900;	
+}
+
+
+
+
+
+/* FEEDBACKS */
+
+#feedback-row{
+	padding: 0% 5%;
+	width: 100%;
+}
+
+.feedback-info{
+  text-align: center;
+}
+
+.feedback-info-img{
+  border-radius: 50%;
+  height: 130px;
+  width: 130px;
+}
+
+
+#feedback-btn{
+    padding: 1.8% 2%;
+    border-radius: 1%;
+    background: #ffff83;
+    font-size: 1rem;
+    margin: 0rem 0.5rem;
+    border: 2px solid #fff200;
 }

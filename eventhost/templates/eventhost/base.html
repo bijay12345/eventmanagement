@@ -15,32 +15,33 @@
 
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg">
-	  <div class="container-fluid" id="nav-padding">
-	    <a class="navbar-brand" id="navbran" href="{%url 'home'%}">Evement</a>
-	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-	      <span class="navbar-toggler-icon"></span>
-	    </button>
-	    <div class="collapse navbar-collapse" id="navbarNav">
-	      <ul class="navbar-nav">
-	        <li class="nav-item" >
-	          <a class="nav-link active" id="nav-links" aria-current="page" href="{%url 'hosts'%}">Hosts</a>
-	        </li>
-	        <li class="nav-item" >
-	          <a class="nav-link" id="nav-links" href="#">Features</a>
-	        </li>
-			<li class="nav-item" >
-				<a class="nav-link" id="nav-links" href="#">Be - organizer</a>
-			</li>
-			<li class="nav-item" >
-				<a class="nav-link" id="nav-links" href="">Book Now</a>
-			</li>
-	      </ul>
-	    </div>
-	  </div>
-	</nav>
+
+	<section id="header">
+		   <a href="{%url 'home'%}"> <img src="/media/logo.png" class="logo"></a>
+		<div>
+			<ul id="navbar">
+				<li><a href="{%url 'home'%}">Home</a></li>
+				<li><a class="{{H_active}}" href="{%url 'hosts'%}">Hosts</a></li>
+				<li><a class="{{A_active}}" href="{%url 'hostform'%}">BE ORGANISER</a></li>
+				<a href="" id="close"><i class="fa-solid fa-xmark"></i></a>
+			</ul>
+		</div>
+		<div id="mobile">
+			<i id="bar" class="fas fa-outdent"></i>
+		</div>
+	</section>
 
 <div class="orgainser-body">
+
+	{% if messages %}
+      {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+			   {{ message }}
+			  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+      {% endfor %}
+    {% endif %}
+
 	{% block content %}{% endblock content %}
 </div>
 	
@@ -48,6 +49,24 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
+
+
+    <script>
+		const close =document.getElementById("close");
+		const bar = document.getElementById("bar");
+		const nav = document.getElementById("navbar");
+		if (bar){
+			bar.addEventListener("click",()=>{
+				nav.classList.add("active");
+			});
+		};
+
+		if (close){
+			close.addEventListener("click",()=>{
+				nav.classList.remove("active");
+			});
+		};
+	</script>
 
 </body>
 </html>

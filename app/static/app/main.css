@@ -4,69 +4,113 @@
 @import "eventdetail.css";
 @import "homepage.css";
 
+/*   GLOBAL STYLING */
+
+h1{
+  font-size: 50px;
+  line-height: 54px;
+  color: #222;
+}
+
+h2{
+  font-size: 46px;
+  line-height: 54px;
+  color: #222;
+
+}
+
+h4{
+  font-size: 20px;
+  color: #222;
+}
+
+h6{
+  font-weight: 700;
+  font-size: 12px;
+}
+
+p{
+  font-size: 16px;
+  color: #465b52;
+  margin: 15px 0 20px 0;
+}
+
+.section-p1{
+  padding: 40px 80px;
+}
+
+.section-m1{
+  margin: 40px 0;
+}
+
+
+
+
 
 /*     Navbar styling     */
-#homeLink{
-  font-size: 1.3rem;
-  color: white;
-  font-family: 'Bebas Neue', cursive;
-}
-#homeLink:hover{
-  text-decoration: underline;
-  color: purple;
-  font-weight: bolder;
-  font-size: 1.8rem;
-  
-}
-
-#homenav{
-  margin-left: 25%;
-  width: 100%;
-}
-
-nav{
-  background-image: linear-gradient(135deg, #CE9FFC 10%, #7367F0 100%);
-}
-
-  
-
-#brnd{
-  padding: 1% 1% 1% 8%;
-  color: linear-gradient(135deg, #CE9FFC 10%, #7367F0 100%);
-  font-size: 2rem;
-  font-family: 'Anton', sans-serif;
-}
 
 
 
-.nav-item-profile{
+#header{
   display: flex;
-  margin-left: 5%;
-  padding-top: .5%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 80px;
+  background: #E3E6F3;
+  box-shadow: 0 5px 15px rgb(0, 0, 0, 0.06);
+  z-index: 999;
+  position: sticky;
+  top: 0;
+  left: 0;
 }
 
-.nav-image{
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  font-size: 3rem;
-  color: white;
+#header .logo{
+   width: 25%;
 }
 
-#profile{
-  
-  margin: 0px;
-  color: white;
-  padding-top: 3px;
-  font-size: 1.3rem;
-  font-family: 'Bebas Neue', cursive;
+#navbar{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-#profile:hover{
-  text-decoration: underline;
-  color: purple;
-  font-weight: bolder;
-  font-size: 1.8rem;
+#navbar li{
+  list-style: none;
+  padding: 0 20px;
+  position: relative;
+}
+
+#navbar li a{
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+  transition: 0.3s ease;
+}
+
+#navbar li a:hover,
+#navbar li .active{
+  color: #088178;
+}
+
+#navbar li a.active::after,
+#navbar li a:hover::after{
+  content:"";
+  width: 30%;
+  height: 2px;
+  background: #088178;
+  position: absolute;
+  bottom: -4px;
+  left: 20px;
+}
+
+#mobile{
+  display: none;
+  align-items: center;
+}
+
+#close{
+  display: none;
 }
 
 
@@ -82,4 +126,77 @@ nav{
   width: 19%;
   border: none;
   padding: 0%;
+}
+
+
+
+
+
+@media (max-width: 477px){
+
+  .section-p1{
+    padding: 20px;
+  }
+
+  #header{
+    padding: 10px 30px;
+  }
+}
+
+@media (max-width:799px){
+
+  .section-p1{
+    padding: 40px 40px;
+  }
+
+  /*NAV SECTION*/
+  #lg-bag{
+    display: none;
+  }
+
+  #navbar {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      position: fixed;
+      top: 0;
+      right: -300px;
+      height: 100vh;
+      width: 300px;
+      background-color: #E3E6F3;
+      box-shadow: 0 40px 60px rgb(0, 0, 0,0.1);
+      padding: 80px 0 0 10px;
+      transition: 0.3s;
+  }
+
+  #navbar.active{
+    right: 0;
+  }
+
+  #navbar li{
+    margin-bottom: 25px;
+  }
+
+  #mobile{
+    display: flex;
+    align-items: center;
+  }
+
+  #mobile i{
+    color: #1a1a1a;
+    font-size: 24px;
+    padding-left: 20px;
+    cursor: pointer;
+  }
+
+  #close{
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    color: #222;
+    font-size: 24px;
+    display: initial;
+
+  }
 }
