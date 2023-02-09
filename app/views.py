@@ -2,10 +2,10 @@ from django.shortcuts import render,get_object_or_404,redirect
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import (LikeSerializer,EventSerializer,EventCustomerSerializer,
-	InterestSerializer,RatingSerializer,CommentSerializer,CommentSerializer2)
+	InterestSerializer,RatingSerializer,CommentSerializer,CommentSerializer2,ArticleSerializer)
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.reverse import reverse
-from .models import Events,Rating,Comment
+from .models import Events,Rating,Comment,Article
 import json
 from django.http import HttpResponseRedirect
 from rest_framework.permissions import IsAuthenticated,AllowAny
@@ -151,9 +151,14 @@ class ArticleView(APIView):
 	template_name="app/article.html"
 	renderer_classes = [TemplateHTMLRenderer]
 	def get(self,reqest,format=None):
+
 		recent_events=Events.objects.all()[:3]
 		serializer=EventSerializer(recent_events,many=True)
-		return Response({"recentevents":serializer.data,"A_active":"active",})
+
+		articles=Article.objects.get(id=1)
+		articleSerializer=ArticleSerializer(articles)
+
+		return Response({"recentevents":serializer.data,"articles":articleSerializer.data,"A_active":"active",})
 
 
 class CommentApiView(APIView):

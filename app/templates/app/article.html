@@ -1,43 +1,37 @@
 {%extends 'app/base.html'%}
 {%block content%}
 <section class="design-section">
-<div class="design-upper">
-	<h1 class="design-title">
-		Make your event joyous and full of happy faces
-	</h1>
-	<h5 class="design-quote" style="padding-bottom: 5%;">An event is not over until everyone is tired of talking about it and we can make it happen for your's.</h5>
-	{%if not user.is_authenticated%}
-		<div class="design-btn-info" style="padding-bottom: 5%;">
-			<a href="{%url 'login' %}" class="design-btn" style="text-decoration: none;">Login</a>
-			<a href="{%url 'register' %}" class="design-btn" style="text-decoration: none;">Register</a>
-		</div>
-	{%endif%}
-	
-</div>
+	<div class="design-upper">
+		<img class="backgroung-img" src="{{articles.image}}">
+		<h1 class="design-title">
+			{{articles.heading}}
+		</h1>
+		<h5 class="design-quote" style="padding-bottom: 5%;">{{articles.quote}}</h5>
+		{%if not user.is_authenticated%}
+			<div class="design-btn-info" style="padding-bottom: 5%;">
+				<a href="{%url 'login' %}" class="design-btn" style="text-decoration: none;">Login</a>
+				<a href="{%url 'register' %}" class="design-btn" style="text-decoration: none;">Register</a>
+			</div>
+		{%endif%}
+		
+	</div>
 
 <div class="design-middle" name="workingmodel">
 	<div class="design-middle-info">
 		<h1 class="design-middle-title">Our Working model</h1>
 		<div class="row">
+			{%for model in articles.workingmodel.all%}
 			<div class="col-lg-4 col-sm-12">
-				
-				<h3>Creativity</h3>
+				<h3>{{model.heading}}</h3>
 				<hr>
-				<p class="text-muted working-model-quotes"><b>Design can be art</b><br><b>Design can be aesthetics</b><br><b>Design is so simple that's why it's so complicated.</b><br><br>With support of our experienced creativity team we come forward and offer to take all these burdens for you to just enjoy these special moments.</p>
+				<p class="text-muted working-model-quotes">
+					<b>{{model.quote}}</b>
+				</p>
+				<p class="text-muted working-model-quotes">
+					{{model.description}}
+				</p>	
 			</div>
-			<div class="col-lg-4 col-sm-12">
-				
-				<h3>Planning</h3>
-				<hr>
-				<p class="text-muted working-model-quotes"><b>“Be faithful to your own taste, because nothing you really like is ever out of style.” —Billy Baldwin</b> <br><br>We offer to do the best that fits in your vision and provide the services according to your plan.</p>
-			</div>
-			
-			<div class="col-lg-4 col-sm-12">
-				
-				<h3>Executing</h3>
-				<hr>
-				<p class="text-muted working-model-quotes"><b>“Execution is the ability to mesh strategy with reality, align people with goals, and achieve the promised results.” Lawrence Bossidy</b><br><br>With over 100 successful event execution and over 1000 satisfied customer we offer to smoothly execute your special occassions with ease.<br>since it's the execution that matters</p>
-			</div>
+			{%endfor%}
 		</div>
 	</div>
 </div>
@@ -60,11 +54,11 @@
 		<hr style="color: white;">
 		<div class="row">
 			{%for item in recentevents%}
-			<div class="col-lg-4 bottom-img">
-				<img class="detail-bottom-img" src="{{item.image}}" alt="Girl in a jacket" width="100%" height="300">
-				<hr>
+			<div class="col-lg-4 bottom-img" onclick="window.location.href='{%url 'detail' item.slug%}'">
+				<img class="detail-bottom-img" src="{{item.image}}" alt="Girl in a jacket" width="100%">
 				<div class="image-text">
-					<h4>{{item.name}}</h4>
+					<h4>{{item.function_name}}</h4>
+					<p>{{item.eventdate}}</p>
 				</div>
 			</div>
 			{%endfor%}					
@@ -80,13 +74,14 @@
 		<div class="col-lg-6">
 			<hr style="width: 85%;">
 			<h1 class="missionTitle">
-				is to make you and your loved ones go WOW.
+				{{articles.mission.heading}}
 			</h1>
 		</div>
 		<div class="col-lg-6">
-			<p class="missionText">With a team of well experienced in management and decors, We assure to give you the best.<br>We offer budget friendly services with the extremely beautiful organized decors.</p>
+			<p class="missionText">{{articles.mission.text}}</p>
 		</div>
 	</div>
+
 </div>
 
 </section>

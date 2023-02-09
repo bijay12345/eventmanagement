@@ -14,8 +14,11 @@
 	background: white;
 }
 
-.event-image{
+.event-img{
 	width: -webkit-fill-available;
+	height: 30vh;
+    object-fit: cover;
+    cursor: pointer;
 }
 
 .event-card-detail-info{

@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 20px 80px;
-  background: #E3E6F3;
+  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
   box-shadow: 0 5px 15px rgb(0, 0, 0, 0.06);
   z-index: 999;
   position: sticky;

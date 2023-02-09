@@ -1,5 +1,5 @@
 from rest_framework import serializers 
-from .models import Events,Rating,Comment
+from .models import Events,Rating,Comment,Article,WorkingModel,Mission
 from users.models import User
 from datetime import date
 
@@ -121,3 +121,18 @@ class EventCustomerSerializer(serializers.ModelSerializer):
 	class Meta:
 		model=Events
 		fields=["customers","managingfirm","functionname","description","contact","location","email"]
+
+
+
+class MissionSerializer(serializers.ModelSerializer):
+	class Meta:
+		model=Mission
+		fields=["heading","text"]
+
+class ArticleSerializer(serializers.ModelSerializer):
+	image = serializers.ImageField(max_length=None, use_url=True,required=False)
+	workingmodel=serializers.PrimaryKeyRelatedField(queryset=WorkingModel.objects.all())
+	mission=MissionSerializer(read_only=True)
+	class Meta:
+		model=Article
+		fields=["id","image","heading","quote","workingmodel","mission"]

@@ -59,6 +59,7 @@
 	<section id="prodetails" class="section-p1">
 		<div class="single-pro-image">
 			<img src="{{event.image}}" width="100%" id="MainImg">
+			<hr>
 			<div class="small-img-group">
 				<div class="small-img-col">
 					<img src="{{event.image}}" width="100%" class="small-img">
@@ -89,13 +90,15 @@
 
 
 
-	<div class="">
+	<div style="margin-top: 30px;">
 		<form action="{% url 'detailinterest' event.slug %}" class="" method="POST">
 			{% csrf_token %}
 			{%if request.user.id in event.interested %}
 				<button name="interest_id" type="submit" value="{{event.slug}}" class="checkbutton checkbutton-checked">
 				<i class="fa-solid fa-user-check" id="check-btn" style="color: blue; font-size: 2rem;"></i>
 				</button>
+				<span style="color: blue;">You are going to this {{event.function_name}}</span>
+
 			{%else%}
 				<button name="interest_id" type="submit" value="{{event.slug}}" class="checkbutton checkbutton-notchecked">
 				<i class="fa-solid fa-user-check" id="check-btn" style="color: grey; font-size: 2rem;"></i>

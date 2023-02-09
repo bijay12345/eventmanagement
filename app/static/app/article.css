@@ -1,13 +1,23 @@
 .design-upper{
   width: 100%;
-  background-color: black;
+  position: relative;
+}
+
+.design-upper .backgroung-img{
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  align-items: center;
+  z-index: -1;
 }
 
 .design-title{
   text-align: center;
   width: 70%;
   margin: auto;
-  padding-top: 13%;
+  padding-top: 150px;
   font-size: 4rem;
   background: linear-gradient(94.23deg,#5374fa 12.41%,#fd9179 52.55%,#ff6969 89.95%);
   -webkit-background-clip: text;
@@ -18,7 +28,7 @@
 
 .design-quote{
   text-align: center;
-  padding-top: 10%;
+  padding-top: 10px;
   margin: auto;
   width: 70%;
   color: white;
@@ -91,11 +101,15 @@
        
 .detail-bottom-img{
   margin: 2%;
+  height: 50vh;
+  object-fit: cover;
+  cursor: pointer;
 }    
 
 .image-text{
-  text-align: center;
-  color: white;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
 }
 
 

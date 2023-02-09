@@ -90,12 +90,12 @@
 						{% for event in events%}
 					      <div class="col-lg-4">
 					      	<div class="event">
-								<img src="{{event.image}}" height="200px" class="event-image" class="event-img"> 
+								<img src="{{event.image}}" class="event-img"> 
 								<div class="event-card-detail-info">
 									
 							        <h5 class="fw-normal">{{event.function_name}} <span class="event-rating text-muted"><i class="fa-solid fa-star"></i>{{event.avgrating}}</span></h5>
 							        <p>Description: {{event.description|truncatechars:120}}</p> 
-							        <p>organised on: <br> {{event.date}}</p>
+							        <p>organised on: <br> {{event.eventdate}}</p>
 							        <a href="{%url 'detail' event.slug%}" class="detail-btn event-detail-btn">Detail &raquo;</a>
 						        
 								</div>

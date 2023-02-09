@@ -19,11 +19,11 @@ class Events(models.Model):
 	slug=models.CharField(max_length=1000,null=True,blank=True)
 	likers=models.ManyToManyField(User,related_name='likers',blank=True)
 	interested=models.ManyToManyField(User,related_name="interested",blank=True)
-	image=models.ImageField(upload_to='eventpic',default='default.jpeg')
-	image2=models.ImageField(upload_to='eventpic',default='default.jpeg')
-	image3=models.ImageField(upload_to='eventpic',default='default.jpeg')
-	image4=models.ImageField(upload_to='eventpic',default='default.jpeg')
-	image5=models.ImageField(upload_to='eventpic',default='default.jpeg')
+	image=models.ImageField(upload_to="articles",default="eventdefault.jpg")
+	image2=models.ImageField(upload_to="articles",default="eventdefault.jpg")
+	image3=models.ImageField(upload_to="articles",default="eventdefault.jpg")
+	image4=models.ImageField(upload_to="articles",default="eventdefault.jpg")
+	image5=models.ImageField(upload_to="articles",default="eventdefault.jpg")
 
 	class Meta:
 		ordering=['-evedate']
@@ -36,41 +36,7 @@ class Events(models.Model):
 	def save(self,*args,**kwargs):
 		if not self.slug:
 			self.slug=slugify(self.function_name+"-"+str(datetime.datetime.now()))
-		
-		image=Image.open(self.image.path)
-		image2=Image.open(self.image2.path)
-		image3=Image.open(self.image3.path)
-		image4=Image.open(self.image4.path)
-		image5=Image.open(self.image5.path)
-
-		if image.width > 500 or image.height > 500:
-			output=(500,500)
-			image.thumbnail(output)
-			image.save(self.image.path)
-
-		if image2.width > 500 or image2.height > 500:
-			output=(500,500)
-			image2.thumbnail(output)
-			image2.save(self.image2.path)
-
-		if image3.width > 500 or image3.height > 500:
-			output=(500,500)
-			image3.thumbnail(output)
-			image3.save(self.image3.path)
-
-		if image4.width > 500 or image4.height > 500:
-			output=(500,500)
-			image4.thumbnail(output)
-			image4.save(self.image4.path)
-
-		if image5.width > 500 or image5.height > 500:
-			output=(500,500)
-			image5.thumbnail(output)
-			image5.save(self.image5.path)
-
 		return super().save(*args,**kwargs)
-
-
 
 
 class Rating(models.Model):
@@ -98,5 +64,27 @@ class Comment(models.Model):
 
 
 
+class Article(models.Model):
+	image=models.ImageField(upload_to="articles",default="articledefault.jpg")
+	heading = models.CharField(max_length=1000)
+	quote=models.CharField(max_length=1000)
+	workingmodel=models.ManyToManyField("WorkingModel")
+	mission = models.ForeignKey("Mission",on_delete=models.SET_NULL,null=True,blank=True)
 
+	def __str__(self):
+		return f"{self.heading}"
 
+class WorkingModel(models.Model):
+	heading=models.CharField(max_length=100)
+	quote=models.TextField()
+	description=models.TextField()
+
+	def __str__(self):
+		return f"{self.heading}"
+
+class Mission(models.Model):
+	heading=models.CharField(max_length=1000)
+	text=models.TextField()
+
+	def __str__(self):
+		return f"{self.heading}"
