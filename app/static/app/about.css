@@ -1,0 +1,51 @@
+
+.about-text{
+  width: 50%;
+  text-align: justify;
+} 
+
+.about-text-top{
+  float: right;
+  margin: 3%;
+}
+.about-top{
+  margin: 2rem;
+}
+
+.about-img-top{
+  margin-left: 5%;
+}
+
+.about-text-middle{
+  float: left;
+  margin-left: 5%;
+  margin-top: 5%;
+}
+
+.about-img-middle{
+  margin-left: 9%;
+}
+
+.about-middle{
+  margin: 2rem;
+}
+.aboutline{
+  width: 90%;
+  margin: auto;
+}
+
+.aboutinfo{
+  text-align: center;
+}
+
+.aboutinfo-img{
+  border-radius: 50%;
+  height: 130px;
+  width: 130px;
+}
+
+#aboutrow{
+  padding: 1rem;
+  width: 90%;
+  margin: auto;
+}

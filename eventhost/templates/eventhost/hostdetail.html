@@ -1,0 +1,132 @@
+{%extends 'eventhost/base.html'%}
+{% block content %}
+
+<section class="host">
+	<div class="host-list">
+		
+			<div class="host-item">
+				<div>
+					<!-- All the styling is listed in hosts.css file -->
+					<div class="host-top">
+						<div class="host-img-div">
+							<img class="host-img-top" height="400px" width="500px" src="{{host.image}}">
+						</div>
+						<div class="host-info">
+							<small>Company name: </small>
+							<div style="display: flex;">
+								<h4 class="host-title">{{host.management_name}}</h4>
+								<div style="display: flex; margin-left: .5rem;">
+
+									<i class="fa-solid fa-star" style="color: gold; margin-left: 8%; margin-top: 0px;"></i>
+									<p>{{host.total_stars}}</p>	
+
+								</div>
+							</div>							
+							<p class="host-location">Location: {{host.street}}, {{host.city}}, {{host.pincode}},{{host.state}}</p>
+							<h5>Description: </h5>
+							<p class="host-text host-text-top">{{host.description}}</p>
+							<div class="detail-link">
+
+								<a href="{%url 'eventbooking' host.id%}" class="detail-btn book-now">Book Now !</a>
+							
+								{%if request.user in customers and request.user not in feedbackcustomers%}
+									<!-- Feed back section -->
+								    <button class="btn" id="feedback-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+								    Give feedback
+								    </button>
+									<div style="min-height: 120px;">
+									  <div class="collapse collapse-horizontal" id="collapseWidthExample">
+
+									  	    <form method="POST" action="{%url 'feedback' host.id%}">
+										        {% csrf_token %}
+									             <legend class="border-bottom mb-4">Feedback</legend>
+
+									             <div class="stars">
+												  	<div>
+													  	<input class="star star-5" id="star-5" value="5" type="radio" name="star"/>
+													    <label class="star star-5" for="star-5"></label>
+													    <input class="star star-4" id="star-4" value="4" type="radio" name="star"/>
+													    <label class="star star-4" for="star-4"></label>
+													    <input class="star star-3" id="star-3" value="3" type="radio" name="star"/>
+													    <label class="star star-3" for="star-3"></label>
+													    <input class="star star-2" id="star-2" value="2" type="radio" name="star"/>
+													    <label class="star star-2" for="star-2"></label>
+													    <input class="star star-1" id="star-1" value="1" type="radio" name="star"/>
+													    <label class="star star-1" for="star-1"></label>
+												  	</div>
+												  
+												</div>
+
+
+
+									              <div class="mb-3 row" style="margin-top: 5%;"> 
+									                <div class="col-sm-10">
+									                  <div class="form-floating">
+														  <textarea class="form-control" placeholder="Leave a feedback here" id="floatingTextarea" name="feedback"></textarea> 
+													  </div>
+													   
+													</div>
+									              </div>
+
+										          <div class="form-group mt-3 mb-4">
+										            <button id="feedback-btn" type="submit" name="host" value="{{host.id}}">Submit</button>
+										          </div>
+										    </form>
+
+									   </div>
+									</div>
+
+									<!-- End of feedback section -->
+								{%endif%}
+
+							</div>
+
+						</div>
+					</div>
+
+					<div class="row" id="event-row" style="width: 100%; ">
+						<h5 style="text-align: center; text-decoration: underline; margin-bottom: 5%; font-size: 200%;" class="text-muted">Our recently organized events</h5>
+
+						{% for event in events%}
+					      <div class="col-lg-4">
+					      	<div class="event">
+								<img src="{{event.image}}" class="event-img"> 
+								<div class="event-card-detail-info">
+									
+							        <h5 class="fw-normal">{{event.function_name}} <span class="event-rating text-muted"><i class="fa-solid fa-star"></i>{{event.avgrating}}</span></h5>
+							        <p>Description: {{event.description|truncatechars:120}}</p> 
+							        <p>organised on: <br> {{event.eventdate}}</p>
+							        <a href="{%url 'detail' event.slug%}" class="detail-btn event-detail-btn">Detail &raquo;</a>
+						        
+								</div>
+					        </div>
+					      </div>
+				        {%endfor%}
+				    </div>
+
+
+				</div>
+			</div>
+	</div>
+
+<!-- Event Feedbacks -->
+
+<div>
+	<h2 style="text-align: center; margin-top: 1rem;">Feedbacks</h2><br><br>
+	<div class="row" id="feedback-row">
+	{%for feedback in feedbacks%}
+      <div class="col-lg-4">
+      	<div class="feedback-info">
+			<img src="{{feedback.user_image}}" class="feedback-info-img"> 
+	        <h5 class="fw-normal">{{feedback.user_name}} <span style="font-size: 1.2rem;"><i class="fa-solid fa-star" style="color: gold;"></i>{{feedback.stars}}</span></h5>
+	        <em>{{feedback.feedback}}</em> 
+        </div>
+      </div>
+    {%endfor%}
+	</div>
+</div>
+
+</section>
+
+
+{% endblock content %}

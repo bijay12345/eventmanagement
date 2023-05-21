@@ -1,0 +1,89 @@
+{%extends 'app/base.html'%}
+{%block content%}
+<section class="design-section">
+	<div class="design-upper">
+		<img class="backgroung-img" src="{{articles.image}}">
+		<h1 class="design-title">
+			{{articles.heading}}
+		</h1>
+		<h5 class="design-quote" style="padding-bottom: 5%;">{{articles.quote}}</h5>
+		{%if not user.is_authenticated%}
+			<div class="design-btn-info" style="padding-bottom: 5%;">
+				<a href="{%url 'login' %}" class="design-btn" style="text-decoration: none;">Login</a>
+				<a href="{%url 'register' %}" class="design-btn" style="text-decoration: none;">Register</a>
+			</div>
+		{%endif%}
+		
+	</div>
+
+<div class="design-middle" name="workingmodel">
+	<div class="design-middle-info">
+		<h1 class="design-middle-title">Our Working model</h1>
+		<div class="row">
+			{%for model in articles.workingmodel.all%}
+			<div class="col-lg-4 col-sm-12">
+				<h3>{{model.heading}}</h3>
+				<hr>
+				<p class="text-muted working-model-quotes">
+					<b>{{model.quote}}</b>
+				</p>
+				<p class="text-muted working-model-quotes">
+					{{model.description}}
+				</p>	
+			</div>
+			{%endfor%}
+		</div>
+	</div>
+</div>
+
+<div class="design-bottom">
+	<div class="bottom-design-info">
+		<h1 class="design-bottom-title bottom-text">Our recently organized Events</h1>
+		<div class="row">
+			<div class="col-lg-8 design-bottom-first-row">
+				<p class="design-bottom-info bottom-text">Below are some of the exciting events we organized with many smiles and happy faces..<br> with well organized and satisfied customers, We guarantee to provide an exciting and wonderful events to you!</p>
+			</div>
+			<div class="col-lg-4 design-bottom-first-row design-button-bottom">
+				{%if request.user.is_authenticated%}
+					<a href="{%url 'home'%}" class="design-btn bnm" style="text-decoration: none; bnm:hover: color:grey;">Learn More &raquo;</a>
+				{%else%}
+					<a href="{%url 'login'%}" class="design-btn bnm" style="text-decoration: none; bnm:hover: color:grey;">Learn More &raquo;</a>
+				{%endif%}
+			</div>
+		</div>
+		<hr style="color: white;">
+		<div class="row">
+			{%for item in recentevents%}
+			<div class="col-lg-4 bottom-img" onclick="window.location.href='{%url 'detail' item.slug%}'">
+				<img class="detail-bottom-img" src="{{item.image}}" alt="Girl in a jacket" width="100%">
+				<div class="image-text">
+					<h4>{{item.function_name}}</h4>
+					<p>{{item.eventdate}}</p>
+				</div>
+			</div>
+			{%endfor%}					
+		</div>
+
+	</div>
+</div>
+
+<div class="ourMission">
+	<h5 class="text-muted" style="margin-bottom: 2rem;">OUR MISSION</h5>
+
+	<div class="row" style="width:99%;">
+		<div class="col-lg-6">
+			<hr style="width: 85%;">
+			<h1 class="missionTitle">
+				{{articles.mission.heading}}
+			</h1>
+		</div>
+		<div class="col-lg-6">
+			<p class="missionText">{{articles.mission.text}}</p>
+		</div>
+	</div>
+
+</div>
+
+</section>
+
+{%endblock content%}

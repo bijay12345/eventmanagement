@@ -1,0 +1,74 @@
+{%extends 'app/base.html'%}
+{%block content%}
+
+<section class="design-2">
+	<div class="design2-top-section">
+		<div class="row" style="width: 100%;">
+			{%for event in page_obj%}
+			
+				<div class="col-lg-3 col-md-6" style="margin-bottom: 5%;">
+					<div>
+						<div class="design2-like-button-div">
+							<form action="{% url 'like' %}" method="POST">
+						      {% csrf_token %}
+						      {% if request.user.name in event.likers %}
+						          <button name="event_id" type="submit" class="design2-like-button" value="{{event.id}}">
+					            	<i class="fa-solid fa-heart" style="color: red; font-size: 1.5rem;"></i>
+					         	  </button>
+				         	  {%else%}
+				         	  	  <button name="event_id" type="submit" class="design2-like-button" value="{{event.id}}">
+					            	<i class="fa-regular fa-heart" style="color: red; font-size: 1.5rem;"></i>
+					         	  </button>
+				         	  {%endif%}
+						    </form>
+						</div>
+						<div onclick="window.location.href='{%url 'detail' event.slug%}'">
+							<img class="list-img" src="{{event.image}}">
+						</div>
+					</div>	
+					<div class="design2-img-detail">
+						<div class="img-detail-heading-star">
+							<p class="design2-heading design2-event-img-heading">{{event.function_name}}</p>
+
+							<p class="design2-heading likedetail">
+								<span><i class="fa-solid fa-star"></i></span> {{event.avgrating}}
+							</p>
+							
+						</div>
+						<div class="img-detail-heading-star">
+							<p class="text-muted design2-heading design2-location-img-heading">{{event.location}}</p>
+						</div>
+						<small class="text-muted detail-date"><i class="fa-regular fa-calendar-days"></i> {{event.evedate}} </small>
+					</div>
+                    <!-- END OF EVENT INTEREST BUTTON -->
+                    <div class="like-interest-div">
+                    	<p class="like-count">{{event.likers_count}} likes</p>
+                    	<p class="comment-count">{{event.no_of_comments}} Comments</p>
+                    	<p class="interest-count">{{event.no_of_interested}} interested</p>
+                    </div>
+                    <hr class="end-list-hr">
+				</div>
+		
+			{%endfor%}
+
+			<div>
+				<div class="pagination-div" style="margin-top: 3%;">
+					{%if page_obj.has_previous%}
+						<a class="btn" id="pagin-btn-p" href="?page={{page_obj.previous_page_number}}">Previous</a>
+					{%endif%}
+
+					<span class="current">
+		                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+		            </span>
+
+					{%if page_obj.has_next%}
+						<a class="btn" id="pagin-btn-n" href="?page={{page_obj.next_page_number}}">Next</a>
+					{%endif%}
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</section>
+
+{%endblock content%}

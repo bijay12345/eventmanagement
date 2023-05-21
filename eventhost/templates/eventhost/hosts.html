@@ -1,0 +1,52 @@
+{%extends 'eventhost/base.html'%}
+{% block content %}
+
+<section class="host">
+	<div class="host-list">
+			
+			<div class="host-item">
+				<h5 class="host-list-title">Based  on  your  preferences.</h5>
+				<hr>
+					{%for host in hosts%}
+						<div>
+							<div class="host-top">
+								<div class="host-img-div">
+									<img class="host-img-top" height="400px" width="500px" src="{{host.image}}">
+								</div>
+								<div class="host-info">
+									<small>Company name: </small>
+									<div style="display: flex;">
+										<h4 class="host-title">{{host.management_name}}</h4>
+										<div style="display: flex; margin-left: .5rem;">
+										
+										<i class="fa-solid fa-star" style="color: gold; margin-left: 8%; margin-top: 0px;"></i>
+										<p>{{host.total_stars}}</p>	
+										
+										</div>		
+									</div>
+									
+
+									
+									<i class="fa-solid fa-location-dot" style="margin-left: 2%;"></i>
+									<p class="host-location">{{host.city}}</p>
+
+									<h5>Description: </h5>
+									<p class="host-text host-text-top">{{host.description}}</p>
+									<div class="detail-link">
+										<a href="{%url 'host-detail' host.id%}" class="detail-btn">Detail &raquo;</a>
+										<a href="{%url 'eventbooking' host.id%}" class="detail-btn book-now">Book Now !</a>
+									</div>
+									
+								</div>
+							</div>
+							<hr class="hostline">
+						</div>
+
+					{%endfor%}
+			</div>
+	</div>
+
+</section>
+
+
+{% endblock content %}

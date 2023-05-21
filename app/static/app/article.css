@@ -1,0 +1,152 @@
+.design-upper{
+  width: 100%;
+  position: relative;
+}
+
+.design-upper .backgroung-img{
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  align-items: center;
+  z-index: -1;
+}
+
+.design-title{
+  text-align: center;
+  width: 70%;
+  margin: auto;
+  padding-top: 150px;
+  font-size: 4rem;
+  background: linear-gradient(94.23deg,#5374fa 12.41%,#fd9179 52.55%,#ff6969 89.95%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Exo 2', sans-serif;
+
+}
+
+.design-quote{
+  text-align: center;
+  padding-top: 10px;
+  margin: auto;
+  width: 70%;
+  color: white;
+}
+
+.design-btn-info{
+  margin-top: 1%;
+  text-align: center;
+}
+
+
+
+/*DESIGN MIDDLE*/
+
+
+.design-middle{
+  width: 100%;
+  background-color: white;
+}
+
+.design-middle-info{
+  margin: 5rem;
+  padding: 3rem;
+}
+
+.design-middle-title{
+  margin-bottom: 3rem;
+}
+
+
+
+
+
+/*DESIGN BOTTOM*/
+
+.bottom-text{
+  color: white;
+}
+
+.design-bottom-title{
+ padding-top: 4rem;
+}
+
+.design-bottom{
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+
+.bottom-design-info{
+  margin: 3rem 5rem 2rem 5rem;
+}
+
+.design-btn{
+  background-color: black;
+  color: white;
+  font-size: 1.5rem;
+  border: 3px solid transparent;
+  border-image: linear-gradient(to right, green, lightgreen);
+  border-image-slice: 1;
+  padding: .5rem;
+  margin-bottom: 3rem;
+  margin-left: 4rem;
+}
+
+
+.bottom-img{
+  padding: 2%;
+}
+       
+.detail-bottom-img{
+  margin: 2%;
+  height: 50vh;
+  object-fit: cover;
+  cursor: pointer;
+}    
+
+.image-text{
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+}
+
+
+/*Mission Section*/
+
+.ourMission{
+  padding: 2rem 5rem 5rem 5rem;
+}
+.missionTitle{
+  font-size: 3.5rem;
+  background: linear-gradient(94.23deg,#5374fa 12.41%,#fd9179 52.55%,#ff6969 89.95%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.missionText{
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+
+.working-model-quotes{
+  text-align: justify;
+}
+
+
+/*DESIGN LAST CONTENT*/
+
+.design-last{
+  background: #0A2647;;
+  padding: 5rem;
+}
+
+.design-last-link{
+  margin: 2rem;
+}
+.design-bottom-line{
+  height: .5rem;
+  background: linear-gradient(94.23deg,#5374fa 12.41%,#fd9179 52.55%,#ff6969 89.95%);
+}

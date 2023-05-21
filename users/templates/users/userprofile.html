@@ -1,0 +1,102 @@
+{%extends 'app/base.html'%}
+{% load rest_framework %}
+{%block content%}
+
+<section class="profile-design">
+  <div class="row" style="width:100%; padding-top: 5%;">
+
+      <div class="col-lg-6 col-md-6">
+        <div class="profile-top-info">
+        <div class="profile-div">
+        <div class="profile-div-img">
+          <img class="profile-img" src="{{profiledata.image}}" width="250px" height="250px">
+        </div>
+        <div class="profile-div-info">
+          <h4 class="profile-heading">{{request.user.name}}</h4>
+          <p class="text-muted"><span><i class="fa-solid fa-location-dot"></i></span> {{profiledata.location}}</p>
+          <p class="text-muted">Email: {{userdata.email}}</p>
+          <p class="text-muted">Phone: {{profiledata.phonenumber}}</p>
+          <p class="text-muted">Bio:<small> {{profiledata.bio}}</small></p>
+
+        </div>
+        </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-md-6">
+        <div class="profile-form">
+        <h4 class="profile-event-title">Profile Update </h4>
+          <form action="{% url 'profile' %}" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Update your username">
+          </div>
+          <div class="mb-3">
+            <label for="profile_email" class="form-label">Email address</label>
+            <input type="email" class="form-control" name="email" id="profile_email" placeholder="Update your Email">
+          </div>
+          <div class="mb-3">
+            <label for="phone" class="form-label">Phone Number</label>
+            <input type="text" class="form-control" id="phone" name="phonenumber" placeholder="Please use country code eg. +991212121212">
+          </div>
+          <div class="mb-3">
+            <label for="bio" class="form-label">Bio</label>
+            <input type="text" class="form-control" id="bio" name="bio" placeholder="Enter your bio here">
+          </div>
+          <div class="mb-3">
+            <label for="location" class="form-label">Location</label>
+            <input type="text" class="form-control" id="location" name="location" placeholder="Enter your location">
+          </div>
+          <label for="inputGroupFile01" class="form-label">Image Upload</label>
+          <div class="input-group mb-3">
+            <input type="file" class="form-control" id="inputGroupFile01" name="image">
+          </div>
+          <button type="submit" class="profile-update-btn">
+             Update
+          </button>
+          </form>
+        </div>
+      </div>
+  </div>
+  <hr class="profile-top-hr">
+</section>
+
+
+
+
+<div class="profile-event-list">
+  <h4 class="profile-event-title">Your Bookings</h4>
+    {%for event in events %}
+        <div class="card profile-event-card">
+          <h5 class="card-header" id="profile-event-header">{{event.function_name}}</h5>
+              <div class="row" id="event-row-div">
+                <div class="col-lg-3 col-md-3">
+                  <img class="profile-event-img" height="150px" width="150px" src="{{event.image}}">
+                  
+                </div>
+      
+                <div class="col-lg-9 col-md-9">
+                    <div class="card-body profile-event-card-detail">
+                      <p class="card-text"><a href="{%url 'host-detail' event.managingfirm%}"><b>Organised by: </b>{{event.managingfirmname}} </a></p>
+                      <p class="card-text"><b>Description: </b>{{event.description|truncatechars:120}}</p>
+                      <p class="card-text"></p>
+                      <p class="card-text"><b>Commencing on</b> - {{event.eventdate}}</p>
+                      <p class="card-text"><b>booked on</b> - {{event.bookingdate}}</p>
+                      <a href="{%url 'detail' event.slug%}" class="profile-update-btn profile-event-btn">View Detail</a>
+                    </div>
+                </div>
+              </div>
+
+        </div>
+      <hr style="color: blue;">
+    {%endfor%}
+</div>
+
+
+
+
+
+
+
+{%endblock content%}

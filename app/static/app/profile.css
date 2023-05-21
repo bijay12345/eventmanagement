@@ -1,0 +1,92 @@
+
+.profile-img-change{
+
+}
+
+.profile-top-info{
+  background-color: #F1F6F5;
+  border-top-right-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  padding: 3% 12% 6% 12%;
+}
+
+.profile-img{
+  border-radius: 50%;
+}
+.profile-design{
+  padding: 0% 12% 0% 12%;
+  margin-top: 3%;
+}
+
+.profile-div{
+  display: flex;
+  margin-left: 2%;
+}
+
+.profile-div-info{
+  width: fit-content;
+  padding: 0% 5% 0% 5%;
+}
+.profile-div-img{
+  width: fit-content;
+  position: relative;
+}
+
+#profile-input{
+  position: absolute;
+  bottom: 17%;
+  left: 7%;
+}
+#profile-img-change{
+  width: 75%;
+  margin-left: 5%;
+}
+.profile-img-btn{
+  margin-top: 7%;
+  margin-left: 24%;
+  font-size: .8rem;
+  border: .5px solid;
+  color: brown;
+}
+
+.profilebuttons{
+  display: flex;
+  margin-top: 5%;
+}
+
+.profile-group-btn{
+  margin-left: 24%;
+      width: 100%;
+}
+
+#profile-info-buttons{
+  border: none;
+  background: #6B728E;
+  padding: 2%;
+  color: white;
+  margin-top: 1%;
+}
+
+.updateProfile{
+  width: fit-content;
+  margin: auto;
+}
+
+.profile-form{
+  margin-bottom: 5%;
+  margin-top: 5%;
+  background: #D6E4E5;
+  padding: 5% 15%;
+  border-top-right-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+}
+
+.profile-update-btn{
+  border: none;
+  background: #0D4C92;
+  padding: 1% 7%;
+  font-size: 1rem;
+  margin-top: 2%;
+  color: white;
+  border-radius: 2px;
+}

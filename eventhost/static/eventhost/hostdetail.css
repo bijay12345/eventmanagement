@@ -1,0 +1,126 @@
+#event-row{
+	padding: 4% 12%;
+	background: aliceblue;
+	margin: 0px;
+}
+
+
+.event{
+	border-radius-bottom-left: 13px;
+	border-radius-bottom-right: 13px;
+	box-shadow: 10px 5px 5px lightgrey;
+	border-bottom-left-radius: 5%;
+	border-bottom-right-radius: 5%;
+	background: white;
+}
+
+.event-img{
+	width: -webkit-fill-available;
+	height: 30vh;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.event-card-detail-info{
+	padding: 3%;
+}
+
+.event-rating{
+	margin-left: 1%;
+	font-size: 1rem;
+}
+
+.fa-star{
+	color: gold;
+    margin: 1%;
+}
+
+.event-detail-btn{
+	background: #8647fd;
+	color: white;
+    margin-left: 30%;
+	padding: 1% 5%;
+}
+
+.event-detail-btn:hover{
+	background: white;
+	color: black;
+	border: 1px solid #8647fd;
+}
+
+
+
+
+
+/*     EVENT BOOKING     */
+
+.eventform-information{
+	padding: 2% 10% 5%;
+}
+
+#eventbookformleft{
+	padding:2% 2% 7% 10%;
+}
+#eventbookformright{
+	padding: 2% 10% 7% 2%;
+}
+
+.booking-btn{
+    padding: 1% 5%;
+    background: #7367F0;
+    color: white;
+    border: 2px solid white;
+}
+
+.booking-btn-div{
+	margin-top: 7%;
+    margin-bottom: 17%;
+}
+
+.management-firm{
+	text-align: center;
+	text-decoration: underline;
+}
+
+.eventform-description{
+	padding-top: 3%;
+}
+
+.eventbooklabel{
+	font-weight: bolder;
+}
+legend{
+    text-align: center;
+    font-weight: 900;	
+}
+
+
+
+
+
+/* FEEDBACKS */
+
+#feedback-row{
+	padding: 0% 5%;
+	width: 100%;
+}
+
+.feedback-info{
+  text-align: center;
+}
+
+.feedback-info-img{
+  border-radius: 50%;
+  height: 130px;
+  width: 130px;
+}
+
+
+#feedback-btn{
+    padding: 1.8% 2%;
+    border-radius: 1%;
+    background: #ffff83;
+    font-size: 1rem;
+    margin: 0rem 0.5rem;
+    border: 2px solid #fff200;
+}

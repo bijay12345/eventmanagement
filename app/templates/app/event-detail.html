@@ -1,0 +1,176 @@
+{%extends 'app/base.html'%}
+{%block content%}
+<section class="design3">
+	<div class="row">
+		<div class="col-lg-4 col-md-4 col-sm-12">
+			<div class="design3-top-section">
+				<h1>{{event.function_name}}</h1>
+				<p class="text-muted">On {{event.evedate}}</p>
+				<div class="design3-top">
+					<p class="design-detail-top"><span><i class="fa-solid fa-star" style="color: gold;"></i></span> {{event.avgrating}}</p> <span class="text-muted">|</span>
+					<p class="design-detail-top ml-2">
+						{{event.no_of_interested}} interested
+					</p> <span class="text-muted">|</span>
+
+					<p class="design-detail-top ml-2">
+						<span>
+							<i style="color: red;" class="fa-solid fa-heart"></i>
+						</span> {{event.likers_count}}
+					</p> <span class="text-muted">|</span>
+
+
+					<p class="design-detail-top ml-2">
+						<span style="margin-left:3px; margin-right: 4px; color: #C58940;"><i class="fa-solid fa-location-dot"></i></span>{{event.location}}
+					</p>
+				</div>
+				<br>	
+			</div>
+		</div>
+		
+		<div class="col-lg-3 col-md-3 col-sm-12">
+			{% if rated == "false" %}
+				<div class="rating-sec">	
+					<div class="stars">
+					  <form action="{%url 'rating'%}" class="star-form" method="POST">
+					  	{%csrf_token%}
+					  	<div>
+						  	<input class="star star-5" id="star-5" value="5" type="radio" name="star"/>
+						    <label class="star star-5" for="star-5"></label>
+						    <input class="star star-4" id="star-4" value="4" type="radio" name="star"/>
+						    <label class="star star-4" for="star-4"></label>
+						    <input class="star star-3" id="star-3" value="3" type="radio" name="star"/>
+						    <label class="star star-3" for="star-3"></label>
+						    <input class="star star-2" id="star-2" value="2" type="radio" name="star"/>
+						    <label class="star star-2" for="star-2"></label>
+						    <input class="star star-1" id="star-1" value="1" type="radio" name="star"/>
+						    <label class="star star-1" for="star-1"></label>
+					  	</div>
+				        <button name="item_id" type="submit" value="{{event.slug}}" class="ratebutton">
+							RATE
+						</button>
+					  </form>
+					</div>
+				</div>
+			{%endif%}
+		</div>		
+	</div>
+
+
+	<section id="prodetails" class="section-p1">
+		<div class="single-pro-image">
+			<img src="{{event.image}}" width="100%" id="MainImg">
+			<hr>
+			<div class="small-img-group">
+				<div class="small-img-col">
+					<img src="{{event.image}}" width="100%" class="small-img">
+				</div>
+				<div class="small-img-col">
+					<img src="{{event.image2}}" width="100%" class="small-img">
+				</div>
+
+				<div class="small-img-col">
+					<img src="{{event.image3}}" width="100%" class="small-img">
+				</div>
+
+				<div class="small-img-col">
+					<img src="{{event.image4}}" width="100%" class="small-img">
+				</div>
+
+				<div class="small-img-col">
+					<img src="{{event.image5}}" width="100%" class="small-img">
+				</div>
+
+			</div>
+		</div>
+		<div class="single-pro-details">
+			<h2>Details</h2>
+			<p>{{event.description}}</p>
+		</div>
+	</section>
+
+
+
+	<div style="margin-top: 30px;">
+		<form action="{% url 'detailinterest' event.slug %}" class="" method="POST">
+			{% csrf_token %}
+			{%if request.user.id in event.interested %}
+				<button name="interest_id" type="submit" value="{{event.slug}}" class="checkbutton checkbutton-checked">
+				<i class="fa-solid fa-user-check" id="check-btn" style="color: blue; font-size: 2rem;"></i>
+				</button>
+				<span style="color: blue;">You are going to this {{event.function_name}}</span>
+
+			{%else%}
+				<button name="interest_id" type="submit" value="{{event.slug}}" class="checkbutton checkbutton-notchecked">
+				<i class="fa-solid fa-user-check" id="check-btn" style="color: grey; font-size: 2rem;"></i>
+				</button>    
+			{%endif%}
+		</form>	
+	</div> 
+
+
+
+	<form method="POST" action="{%url 'comments'%}" style="margin-top: 1rem;">
+	  {%csrf_token%}
+	  <div class="mb-3" style="margin-top: 1rem; display: flex;">
+	    <textarea class="form-control" name="comment" rows="1" style="width: 50%;" placeholder="Add a comment..."></textarea>
+	    <button type="submit" name="event_id" id="comment-btn" value="{{event.slug}}" style="margin-left: 2rem;">comment</button>
+	  </div>
+	</form>
+	<div class="comment-section">
+		<h5 class="text-muted" style="margin: 5% 0% 3% 0%;"> Comments: </h5>
+		<hr>
+		{%for comment in comments%}
+
+			<div class="comment-div">
+				<div class="comment-div-top">
+					<img class="comment-img" src="{{event.image2}}" width="30px" height="30px">
+					<div class="comment-div-bottom">
+						<p class="comment-item comment-user">{{comment.user}}</p>
+						<small class="comment-item text-muted">{{comment.comment}}</small>
+					</div>	
+				</div>
+				<small style="margin-left: 7%;">{{comment.date_comment|timesince}} ago</small>
+			</div>
+
+		{%endfor%}
+	</div>
+	
+
+</section>
+
+
+
+<script>
+	
+	var MainImg = document.getElementById("MainImg");
+	var smallimg = document.getElementsByClassName("small-img");
+
+	smallimg[0].onclick=function(){
+		MainImg.src = smallimg[0].src;
+	}
+
+	smallimg[1].onclick=function(){
+	MainImg.src = smallimg[1].src;
+	}
+
+	smallimg[2].onclick=function(){
+	MainImg.src = smallimg[2].src;
+	}
+
+	smallimg[3].onclick=function(){
+	MainImg.src = smallimg[3].src;
+	}
+
+	smallimg[4].onclick=function(){
+	MainImg.src = smallimg[4].src;
+	}
+
+</script>
+
+
+
+
+
+
+
+{%endblock content%}

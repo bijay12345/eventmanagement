@@ -1,0 +1,80 @@
+{%extends 'eventhost/base.html'%}
+{%block content%}
+<div class="content-section container" style="width: 45%;margin-top: 5%; line-height: 3rem;">
+    <form method="POST" action="{%url 'hostform' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+             <legend class="border-bottom mb-4">Fill up the form</legend>
+
+              <div class="mb-3 row" style="margin-top: 5%;">
+                <label for="managementname" class="col-sm-2 col-form-label">Management Name</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="managementname" name="managementname">
+                </div>
+              </div>
+
+              <div class="mb-3 row" style="margin-top: 5%;">
+                <label for="email" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                  <input type="email" class="form-control" id="location" name="email">
+                </div>
+              </div>
+
+              <div class="mb-3 row" style="margin-top: 5%;">
+                <label for="phone" class="col-sm-2 col-form-label">Phone number</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="phone" name="phonenumber">
+                </div>
+              </div>
+
+              <div class="mb-3 row" style="margin-top: 5%;">
+                <label for="street" class="col-sm-2 col-form-label">Street</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="street" name="street">
+                </div>
+              </div>
+
+              <div class="mb-3 row" style="margin-top: 5%;">
+                <label for="city" class="col-sm-2 col-form-label">City</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="city" name="city">
+                </div>
+              </div>
+              
+              <div class="mb-3 row" style="margin-top: 5%;">
+                <label for="pincode" class="col-sm-2 col-form-label">Pincode</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="pincode" name="pincode">
+                </div>
+              </div>
+              <div class="mb-3 row" style="margin-top: 5%;">
+                <label for="state" class="col-sm-2 col-form-label">State</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="state" name="state">
+                </div>
+              </div>
+
+              <div class="mb-3 row" style="margin-top: 5%;">
+                <label for="description" class="col-sm-2 col-form-label">Description</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="description" name="description">
+                </div>
+              </div>
+
+              <div class="mb-3 row" style="margin-top: 5%;">
+                <label for="price" class="col-sm-2 col-form-label">Price</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="price" name="price">
+                </div>
+              </div>
+
+              <div class="input-group mb-3">
+                <input type="file" class="form-control" id="inputGroupFile01" name="image">
+              </div>
+
+
+        <div class="mt-3 mb-4">
+            <button class="hostformbtn" type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+{%endblock content%}

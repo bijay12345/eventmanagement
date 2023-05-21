@@ -1,0 +1,150 @@
+.list-img{
+  border-radius: 1rem;
+  border-radius: 1rem;
+  width: 100%;
+  height: 40vh;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.list-card-link{
+  text-decoration: none;
+  color: black;
+}
+
+.list-card-link:hover{
+  color: black;
+}
+
+.design2-top-section{
+  padding: 5rem;
+}
+.design2-img-detail{
+  position: relative;
+  padding-top: 1rem;
+}
+.img-detail-heading-star{
+  display: flex;
+}
+.design2-heading{
+  width: fit-content;
+  margin: 0px;
+}
+
+.design2-like-button-div{
+  position: relative;
+}
+
+.design2-like-button{
+  border: 0;
+  background-color: transparent;
+  position: absolute;
+  right: 1rem;
+  top: 1.5rem;
+}
+
+.design2-event-img-heading{
+  font-size: .9rem;
+}
+.design2-location-img-heading{
+  font-size: .7rem;
+}
+
+.likedetail{
+  position: absolute;
+  right: 1.5rem;
+  font-size: .9rem;
+}
+
+.detail-date{
+  font-size: .8rem;
+}
+
+.design2-bottom-list-button{
+  width: 90%;
+  border-color: white;
+  background: gold;
+  border: 0px;
+  border-radius: 2px;
+  margin-left: 5%;
+}
+
+.design2-bottom-list-button-detail{
+  margin-top: 1rem;
+  background: blue;
+  color: white;
+}
+
+
+.end-list-hr{
+  margin: 5px;
+}
+
+.like-interest-div{
+  position: relative;
+  display: flex;
+}
+
+.like-count{
+  font-size: 70%;
+  margin: .3rem 0rem .2rem 0rem;
+}
+.comment-count{
+  font-size: 70%;
+  margin: 1.5% 0% 2% 20%;
+}
+
+.interest-count{
+  position: absolute;
+  right: 3%;
+  font-size: 70%;
+  margin: .3rem 0rem .2rem 0rem;
+}
+
+
+
+.list-check-mark-no{
+  border: 0;
+  background-color: transparent;
+}
+
+.list-check-mark-yes{
+  border: 0;
+  background-color: transparent;
+}
+
+#check-btn{
+  font-size: 1.4rem;
+}
+
+.pagination-div{
+  width: fit-content;
+  margin: auto;
+}
+
+#pagin-btn-n{
+  background: darkgoldenrod;
+  border-radius: 3px;
+  color: aliceblue;
+}
+
+#pagin-btn-p{
+    background: burlywood;
+    border-radius: 3px;
+    color: beige;
+}
+
+.interest{
+  width: fit-content;
+}
+
+.interest-row{
+  display: flex;
+  position: relative;
+  padding: 2% 0% 5%;
+}
+.comment-icon{
+  position: absolute;
+  right: 13%;
+  font-size: 1.3rem;
+}

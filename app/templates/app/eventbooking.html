@@ -1,0 +1,73 @@
+{%extends 'eventhost/base.html'%}
+{% block content %}
+<p style="text-align: center; padding-top: 1%;"><b style="text-decoration: underline;">NOTE</b> : Please read all the information carefully before proceeding to book.</p>
+<p class="eventform-information">You are making a deal with <span style="text-decoration: underline; font-weight: bold;">{{data.management_name}}</span> and will be further contacted for more information about the event arrangements and service fees! kindly contact the contractor via email for further querires. <b>THANK YOU!</b></p>
+<div class="row" style="width: 100%;">
+
+    <div class="col-lg-6" id="eventbookformleft">
+      <div class=" container">
+          <form method="POST" action="{%url 'eventbooking-post' %}">
+              {% csrf_token %}
+                   <legend class="border-bottom mb-4">Fill the information</legend>
+
+                    <div class="mb-3 " style="margin-top: 5%;">
+                      <label class="eventbooklabel" for="email">Email: </label>
+                      <div>
+                        <input type="email" class="form-control" id="email" name="email" style="border: 1px solid blue;">
+                      </div>
+                    </div>
+
+                    <div class="mb-3 " style="margin-top: 5%;">
+                      <label class="eventbooklabel" for="function" >Function Name: </label>
+                      <div>
+                        <input type="text" class="form-control" id="funuction" name="functionname" style="border: 1px solid blue;">
+                      </div>
+                    </div>
+
+                    <div class="mb-3 " style="margin-top: 5%;">
+                      <label class="eventbooklabel" for="floatingTextarea2">Description: </label>
+                       <div class="form-floating">
+                        <textarea class="form-control" placeholder="Leave a comment here" name="description" id="floatingTextarea2" style="height: 100px;border: 1px solid blue;"></textarea>
+                       </div>
+                    </div>
+
+
+                    <div class="mb-3 " style="margin-top: 5%;">
+                      <label class="eventbooklabel" for="contact"> contact</label>
+                      <div>
+                        <input type="text" class="form-control" id="contact" name="contact" style="border: 1px solid blue;">
+                      </div>
+                    </div>
+
+                    <div class="mb-3 " style="margin-top: 5%;">
+                      <label class="eventbooklabel" for="location"> location</label>
+                      <div>
+                        <input type="text" class="form-control" id="location" style="border: 1px solid blue;" name="location">
+                      </div>
+                    </div>
+
+                    <div class="mb-3 " style="margin-top: 5%;">
+                      <label class="eventbooklabel" for="location"> Date</label>
+                      <div>
+                        <input type="date" name="date" style="border: 1px solid blue;">
+                      </div>
+                    </div>
+                    
+
+      	        <div class="booking-btn-div">
+      	            <button type="submit" class="booking-btn" name="managementid" value="{{data.id}}">Proceed</button>
+      	        </div>
+          </form>
+      </div>
+    </div>
+
+    <div class="col-lg-6" id="eventbookformright">
+       <h4 class="management-firm">{{data.management_name}}</h4>
+       <p class="eventform-description">{{data.description}}</p>
+    </div>
+
+</div>
+
+
+
+{% endblock content %}

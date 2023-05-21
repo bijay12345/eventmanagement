@@ -1,0 +1,72 @@
+
+.host-top{
+	display: flex;
+	padding: 4% 12%;
+}
+
+.host-list-title{
+	text-align: center; 
+	background: ghostwhite;
+	padding: 1%;
+	font-family: 'Anton', sans-serif;
+	text-decoration: underline;
+}
+
+.host-img-div{
+	width: 50%;
+}
+
+.host-img-top{
+	width: 400px;
+	height: 50vh;
+	border-radius: 10px;
+	background-size: cover;
+	object-fit: cover;
+	background-position: center;
+	box-shadow: 20px 20px 34px rgba(0, 0, 0, 0.03);
+	cursor: pointer;
+}
+
+.host-img-top:hover{
+	box-shadow: 10px 10px 54px rgba(0,0,0,0.15);
+}
+
+
+.host-title{
+	text-decoration: underline;
+}
+
+.host-info{
+	padding: 3% 1% 0% 2%;
+	width: 50%;
+}
+
+
+.host-text{
+  text-align: justify;
+} 
+
+.detail-link{
+	margin-top: 6%;
+}
+
+.detail-btn{
+	text-decoration: none;
+	padding: 2%;
+	background: cadetblue;
+	font-size: 1.2rem;
+	color: white;
+	margin: 0rem 0.5rem;
+	border: 2px solid white;
+}
+
+.book-now{
+	background: #8647fd;
+}
+
+.hostline{
+  width: 90%;
+  margin: auto;
+}
+
+

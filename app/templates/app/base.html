@@ -1,0 +1,107 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+	<link rel="stylesheet" type="text/css" href="{%static 'app/main.css'%}">
+	<link rel="stylesheet" type="text/css" href="{%static 'users/main.css'%}">
+
+	<script src="https://kit.fontawesome.com/a34dbf6751.js" crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+	<script src="https://kit.fontawesome.com/a34dbf6751.js" crossorigin="anonymous"></script>
+
+	<!-- Google font imports -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600&family=Montserrat:wght@500&display=swap" rel="stylesheet">	
+	<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Kanit:wght@500&family=Oswald:wght@700&display=swap" rel="stylesheet">
+
+</head>
+<body style="font-family: 'Montserrat', sans-serif;">
+
+	<section id="header">
+		{%if user.is_authenticated%}
+			<a href="{%url 'home'%}"> <img src="/media/logo.png" class="logo"></a>
+		{%else%}
+			<a href="{%url 'front'%}"> <img src="/media/logo.png" class="logo"></a>
+		{%endif%}
+		<div>
+			<ul id="navbar">
+				{%if user.is_authenticated%}
+					<li><a class="{{H_active}}" href="{%url 'home'%}">Home</a></li>
+					<li><a class="{{A_active}}" href="{%url 'front'%}">Articles</a></li>
+					<li><a class="{{B_active}}" href="{%url 'hosts'%}">Book Event</a></li>
+					<li><a class="{{P_active}}" href="{%url 'profile'%}">Profile</a></li>
+					<li><a class="{{L_active}}" href="{%url 'logout'%}">Logout</a></li>
+				{%else%}
+					<li><a class="{{AB_active}}" href="{%url 'about-us'%}">About US</a></li>
+					<li><a class="{{LO_active}}" href="{%url 'login'%}">Login</a></li>
+					<li><a class="{{R_active}}" href="{%url 'register'%}">Register</a></li>
+				{%endif%}
+				<a href="" id="close"><i class="fa-solid fa-xmark"></i></a>
+			</ul>
+		</div>
+		<div id="mobile">
+			<i id="bar" class="fas fa-outdent"></i>
+		</div>
+	</section>
+
+		{% if messages %}
+          {% for message in messages %}
+	            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+				   {{ message }}
+				  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+          {% endfor %}
+        {% endif %}
+        <div class="blockdiv">
+        	{%block content%}
+			{%endblock content%}	
+        </div>
+
+	<div class="design-last">
+		<div class="row" style="width:100%;">
+			<div style="text-align: center;">
+				<a class="design-last-link" style="width: fit-content;" href="">FAQ</a>
+				<a class="design-last-link" style="width: fit-content;" href="">Join Us</a>
+				<a class="design-last-link" style="width: fit-content;" href="">Explore</a>
+				<a class="design-last-link" style="width: fit-content;" href="">Book</a>
+			</div>	
+		</div>
+	</div>
+	<div class="design-bottom-line"></div>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+
+
+<script>
+	const close =document.getElementById("close");
+	const bar = document.getElementById("bar");
+	const nav = document.getElementById("navbar");
+	if (bar){
+		bar.addEventListener("click",()=>{
+			nav.classList.add("active");
+		});
+	};
+
+	if (close){
+		close.addEventListener("click",()=>{
+			nav.classList.remove("active");
+		});
+	};
+</script>
+
+</body>
+</html>
